@@ -1,0 +1,4 @@
+# CANCELS.
+CANCEL_TO_MAIN_MENU_CALLBACK_DATA = 'cancel_to_main_menu'
+# USERS COMMANDS.
+START_COMMAND_CALLBACK_DATA = 'start_command'

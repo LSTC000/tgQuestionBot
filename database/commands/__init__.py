@@ -19,7 +19,8 @@ __all__ = [
     'update_test_completed_attempts',
     'update_test_likes',
     'update_test_dislikes',
-    'check_user_alert'
+    'check_user_alert',
+    'check_user_info'
 ]
 
 
@@ -36,6 +37,7 @@ from .update_user_opened_tests import update_user_opened_tests
 from .update_user_completed_tests import update_user_completed_tests
 from .update_user_likes import update_user_likes
 from .update_user_dislikes import update_user_dislikes
+from .check_user_info import check_user_info
 # GamesInfo.
 from .add_game_info import add_game_info
 from .update_game_attempts import update_game_attempts

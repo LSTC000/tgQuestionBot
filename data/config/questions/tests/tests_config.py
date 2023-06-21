@@ -1,0 +1,3 @@
+TESTS_NAME = [
+    'Iq',
+]

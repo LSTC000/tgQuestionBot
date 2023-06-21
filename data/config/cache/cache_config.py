@@ -1,0 +1,3 @@
+# User info cache
+USER_INFO_MAXSIZE = 1
+USER_INFO_TTL = 86400

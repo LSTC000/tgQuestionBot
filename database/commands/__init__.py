@@ -11,6 +11,7 @@ __all__ = [
     'update_user_completed_tests',
     'update_user_likes',
     'update_user_dislikes',
+    'update_game_attempts',
     'check_user_alert'
 ]
 
@@ -26,4 +27,5 @@ from .update_user_opened_tests import update_user_opened_tests
 from .update_user_completed_tests import update_user_completed_tests
 from .update_user_likes import update_user_likes
 from .update_user_dislikes import update_user_dislikes
+from .update_game_attempts import update_game_attempts
 from .check_user_alert import check_user_alert

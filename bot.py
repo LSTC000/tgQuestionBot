@@ -13,9 +13,9 @@ from handlers import (
     register_main_menu
 )
 
-from database import startup_setup, shutdown_setup, get_users_alert
+from database import startup_setup, shutdown_setup
 
-from functions import send_alerts
+from functions import send_alerts, check_games_info, check_tests_info
 
 from aiogram import Dispatcher
 from aiogram.utils import executor
@@ -35,6 +35,12 @@ async def on_startup(dispatcher: Dispatcher):
 
     logger.info('Setup PostgreSQL connection')
     await startup_setup()
+
+    logger.info('Checking all games')
+    await check_games_info()
+
+    logger.info('Checking all tests')
+    await check_tests_info()
 
     logger.info('Set all default commands')
     await set_default_commands(bot)

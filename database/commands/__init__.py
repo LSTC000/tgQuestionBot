@@ -7,6 +7,7 @@ __all__ = [
     'update_user_completed_games',
     'update_user_opened_tests',
     'update_user_completed_tests',
+    'update_user_likes',
     'check_user_alert'
 ]
 
@@ -18,4 +19,5 @@ from .update_user_opened_games import update_user_opened_games
 from .update_user_completed_games import update_user_completed_games
 from .update_user_opened_tests import update_user_opened_tests
 from .update_user_completed_tests import update_user_completed_tests
+from .update_user_likes import update_user_likes
 from .check_user_alert import check_user_alert

@@ -1,6 +1,8 @@
+import datetime
+
 from database.database_setup import BaseModel
 
-from sqlalchemy import Column, BigInteger, SmallInteger, sql
+from sqlalchemy import DateTime, Column, BigInteger, SmallInteger, sql, func
 
 
 class Alerts(BaseModel):
@@ -13,5 +15,14 @@ class Alerts(BaseModel):
     user_id = Column(BigInteger, nullable=False)
     # 1 - alert, 0 - block alert.
     alert = Column(SmallInteger, nullable=False)
+    # Created alert date.
+    created_date = Column(DateTime(True), server_default=func.now())
+    # Update alert date.
+    updated_date = Column(
+        DateTime(True),
+        default=datetime.datetime.utcnow,
+        onupdate=datetime.datetime.utcnow,
+        server_default=func.now()
+    )
 
     query: sql.select

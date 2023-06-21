@@ -8,11 +8,9 @@ from sqlalchemy import Column, BigInteger, VARCHAR, Integer, DateTime, sql, func
 class GamesInfo(BaseModel):
     __tablename__ = 'games_info'
 
-    # Auto increment id.
-    id = Column(BigInteger, primary_key=True, autoincrement=True,
-                server_default=sql.text('nextval(\'games_info_id_seq\')'))
     # Game id.
-    game_id = Column(Integer, nullable=False)
+    game_id = Column(BigInteger, primary_key=True, autoincrement=True,
+                server_default=sql.text('nextval(\'games_info_id_seq\')'))
     # Game name.
     game_name = Column(VARCHAR(64), nullable=True)
     # Number of attempts.

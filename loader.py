@@ -6,10 +6,14 @@ from data.config import (
     DISABLE_WEB_PAGE_PREVIEW,
     REDIS_HOST,
     REDIS_PORT,
-    REDIS_DB
+    REDIS_DB,
+    USERS_INFO_MAXSIZE,
+    USERS_INFO_TTL
 )
 
 from gino import Gino
+
+from cachetools import TTLCache
 
 from aiogram import Bot, Dispatcher
 from aiogram.contrib.fsm_storage.redis import RedisStorage2
@@ -19,6 +23,7 @@ __all__ = [
     'bot',
     'dp',
     'db',
+    'users_info_cache',
     'logger'
 ]
 
@@ -29,5 +34,6 @@ dp = Dispatcher(bot=bot, storage=storage)
 
 db = Gino()
 
+users_info_cache = TTLCache(maxsize=USERS_INFO_MAXSIZE, ttl=USERS_INFO_TTL)
 
 logger = logging.getLogger(__name__)

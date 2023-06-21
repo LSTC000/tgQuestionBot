@@ -8,11 +8,9 @@ from sqlalchemy import Column, BigInteger, VARCHAR, Integer, DateTime, sql, func
 class TestsInfo(BaseModel):
     __tablename__ = 'tests_info'
 
-    # Auto increment id.
-    id = Column(BigInteger, primary_key=True, autoincrement=True,
-                server_default=sql.text('nextval(\'tests_info_id_seq\')'))
     # Test id.
-    test_id = Column(Integer, nullable=False)
+    test_id = Column(BigInteger, primary_key=True, autoincrement=True,
+                server_default=sql.text('nextval(\'tests_info_id_seq\')'))
     # Test name.
     test_name = Column(VARCHAR(64), nullable=True)
     # Number of attempts.

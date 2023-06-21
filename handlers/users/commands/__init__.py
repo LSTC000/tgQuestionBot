@@ -1,7 +1,9 @@
-__all__ = ['register_users_commands']
+__all__ = ['register_users_commands', 'set_default_commands']
 
 
 from .start_msg import start_msg
+from .setting_commands import set_default_commands
+
 
 from aiogram import Dispatcher
 

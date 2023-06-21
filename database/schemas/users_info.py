@@ -19,6 +19,10 @@ class UsersInfo(BaseModel):
     opened_games = Column(Integer, nullable=False)
     # Number of games completed by the user.
     completed_games = Column(Integer, nullable=False)
+    # Number of tests opened by the user.
+    opened_tests = Column(Integer, nullable=False)
+    # Number of tests completed by the user.
+    completed_tests = Column(Integer, nullable=False)
     # Likes that the user has put.
     likes = Column(Integer, nullable=False)
     # Dislikes that the user has put.

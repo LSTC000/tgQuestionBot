@@ -1,0 +1,3 @@
+GAMES_NAME = [
+    'Naruto',
+]

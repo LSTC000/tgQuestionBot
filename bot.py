@@ -7,10 +7,8 @@ from data.config import SKIP_UPDATES
 from data.messages import ALERT_STARTUP_MESSAGE, ALERT_SHUTDOWN_MESSAGE
 
 from handlers import (
-    register_users_cancels_menu,
     register_users_commands,
     set_default_commands,
-    register_main_menu
 )
 
 from database import startup_setup, shutdown_setup
@@ -22,8 +20,6 @@ from aiogram.utils import executor
 
 
 def register_all_handlers(dispatcher: Dispatcher):
-    register_main_menu(dispatcher)
-    register_users_cancels_menu(dispatcher)
     register_users_commands(dispatcher)
 
 

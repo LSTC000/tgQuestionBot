@@ -1,28 +1,12 @@
-import datetime
-
 from database.database_setup import BaseModel
 
-from sqlalchemy import DateTime, Column, BigInteger, SmallInteger, sql, func
+from sqlalchemy import Column, BigInteger, sql
 
 
 class Alerts(BaseModel):
     __tablename__ = 'alerts'
 
-    # Auto increment id.
-    id = Column(BigInteger, primary_key=True, autoincrement=True,
-                server_default=sql.text('nextval(\'alerts_id_seq\')'))
     # Telegram user id.
-    user_id = Column(BigInteger, nullable=False)
-    # 1 - alert, 0 - block alert.
-    alert = Column(SmallInteger, nullable=False)
-    # Created alert date.
-    created_date = Column(DateTime(True), server_default=func.now())
-    # Update alert date.
-    updated_date = Column(
-        DateTime(True),
-        default=datetime.datetime.utcnow,
-        onupdate=datetime.datetime.utcnow,
-        server_default=func.now()
-    )
+    user_id = Column(BigInteger, nullable=False, primary_key=True)
 
     query: sql.select

@@ -3,6 +3,7 @@ __all__ = [
     'add_user_alert',
     'add_user_info',
     'add_game_info',
+    'add_test_info',
     'delete_user_alert',
     'update_user_opened_games',
     'update_user_completed_games',
@@ -17,6 +18,7 @@ from .get_users_alert import get_users_alert
 from .add_user_alert import add_user_alert
 from .add_user_info import add_user_info
 from .add_game_info import add_game_info
+from .add_test_info import add_test_info
 from .delete_user_alert import delete_user_alert
 from .update_user_opened_games import update_user_opened_games
 from .update_user_completed_games import update_user_completed_games

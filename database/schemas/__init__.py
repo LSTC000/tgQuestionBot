@@ -1,5 +1,5 @@
-__all__ = ['Template', 'Alerts']
+__all__ = ['UsersInfo', 'Alerts']
 
 
 from .alerts import Alerts
-from .template import Template
+from .users_info import UsersInfo

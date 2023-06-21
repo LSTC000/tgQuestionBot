@@ -1,2 +1,2 @@
-# User info cache
-USER_INFO_CACHE_KEY = 'user_info'
+# Users info cache
+USERS_INFO_CACHE_KEY = 'users_info'

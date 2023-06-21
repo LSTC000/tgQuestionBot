@@ -10,7 +10,6 @@ async def get_users_alert() -> list:
     """
 
     try:
-        query = select([func.distinct(Alerts.user_id)]).where(Alerts.alert == 1)
-        return await query.gino.all()
+        return await select([func.distinct(Alerts.user_id)]).gino.all()
     except ArgumentError:
         return []

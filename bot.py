@@ -15,17 +15,10 @@ from handlers import (
 
 from database import startup_setup, shutdown_setup, get_users_alert
 
+from functions import send_alerts
+
 from aiogram import Dispatcher
 from aiogram.utils import executor
-from aiogram.utils.exceptions import (
-    BotBlocked,
-    ChatNotFound,
-    UserDeactivated,
-    MigrateToChat,
-    Unauthorized,
-    BadRequest,
-    RetryAfter
-)
 
 
 def register_all_handlers(dispatcher: Dispatcher):
@@ -50,24 +43,12 @@ async def on_startup(dispatcher: Dispatcher):
     register_all_handlers(dispatcher)
 
     logger.info('Bot starting users alert')
-    users_alert = await get_users_alert()
-    for user_alert in users_alert:
-        user_alert = user_alert[0]
-        try:
-            await bot.send_message(chat_id=user_alert, text=ALERT_STARTUP_MESSAGE, disable_notification=True)
-        except (BotBlocked, ChatNotFound, UserDeactivated, MigrateToChat, Unauthorized, BadRequest, RetryAfter):
-            pass
+    await send_alerts(text_alert=ALERT_STARTUP_MESSAGE)
 
 
 async def on_shutdown(dispatcher: Dispatcher):
     logger.info('Bot stopped users alert')
-    users_alert = await get_users_alert()
-    for user_alert in users_alert:
-        user_alert = user_alert[0]
-        try:
-            await bot.send_message(chat_id=user_alert, text=ALERT_SHUTDOWN_MESSAGE, disable_notification=True)
-        except (BotBlocked, ChatNotFound, UserDeactivated, MigrateToChat, Unauthorized, BadRequest, RetryAfter):
-            pass
+    await send_alerts(text_alert=ALERT_SHUTDOWN_MESSAGE)
 
     logger.info('Closing PostgreSQL connection')
     await shutdown_setup()

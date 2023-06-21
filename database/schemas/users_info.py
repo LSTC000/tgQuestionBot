@@ -8,11 +8,8 @@ from sqlalchemy import Column, BigInteger, VARCHAR, Integer, DateTime, sql, func
 class UsersInfo(BaseModel):
     __tablename__ = 'users_info'
 
-    # Auto increment id.
-    id = Column(BigInteger, primary_key=True, autoincrement=True,
-                server_default=sql.text('nextval(\'users_info_id_seq\')'))
     # Telegram user id.
-    user_id = Column(BigInteger, nullable=False)
+    user_id = Column(BigInteger, nullable=False, primary_key=True)
     # Telegram user name.
     user_name = Column(VARCHAR(128), nullable=True)
     # Number of games opened by the user.

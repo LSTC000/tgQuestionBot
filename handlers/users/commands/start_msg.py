@@ -1,14 +1,8 @@
-from loader import dp, bot
-
-from data.redis import LAST_IKB_REDIS_KEY
-
-from data.messages import START_MESSAGE
+from loader import dp
 
 from database import add_user_info
 
-from functions import last_ikb_clear, check_user_info_cache
-
-from keyboards import start_ikb
+from functions import last_ikb_clear, check_user_info_cache, call_start_ikb
 
 from aiogram import types
 from aiogram.dispatcher.storage import FSMContext
@@ -28,10 +22,4 @@ async def start_msg(message: types.Message, state: FSMContext) -> None:
         # Clear all redis data for user.
         data.clear()
         # Call start inline menu.
-        msg = await bot.send_message(
-            chat_id=user_id,
-            text=START_MESSAGE.format(message.from_user.first_name),
-            reply_markup=start_ikb()
-        )
-        # Remember id of the last inline keyboard.
-        data[LAST_IKB_REDIS_KEY] = msg.message_id
+        await call_start_ikb(user_id=user_id, first_name=message.from_user.first_name, state=state)

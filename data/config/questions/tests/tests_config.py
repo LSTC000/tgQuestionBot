@@ -21,3 +21,4 @@ TESTS_NAME = [
     'test_19',
     'test_20',
 ]
+TESTS_COUNT = len(TESTS_NAME)

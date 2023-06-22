@@ -1,5 +1,6 @@
-__all__ = ['last_ikb_clear', 'call_start_ikb']
+__all__ = ['last_ikb_clear', 'call_start_ikb', 'call_main_menu_ikb']
 
 
 from .last_ikb_clear import last_ikb_clear
 from .call_start_ikb import call_start_ikb
+from .call_main_menu_ikb import call_main_menu_ikb

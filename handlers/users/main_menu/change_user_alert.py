@@ -1,6 +1,6 @@
 from loader import dp
 
-from data.callbacks import CHANGE_ALERT_CALLBACK_DATA
+from data.callbacks import CHANGE_USER_ALERT_CALLBACK_DATA
 
 from functions import edit_main_menu_ikb, check_user_alert_cache, add_user_alert_cache, delete_user_alert_cache
 
@@ -10,7 +10,7 @@ from aiogram import types
 from aiogram.dispatcher.storage import FSMContext
 
 
-@dp.callback_query_handler(lambda c: c.data == CHANGE_ALERT_CALLBACK_DATA, state=MainMenuStatesGroup.main_menu_ikb)
+@dp.callback_query_handler(lambda c: c.data == CHANGE_USER_ALERT_CALLBACK_DATA, state=MainMenuStatesGroup.main_menu_ikb)
 async def change_user_alert(callback: types.CallbackQuery, state: FSMContext) -> None:
     user_id = callback.from_user.id
 

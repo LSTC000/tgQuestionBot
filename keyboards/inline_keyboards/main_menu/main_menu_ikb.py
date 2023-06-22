@@ -3,7 +3,7 @@ from data.config import ROW_WIDTH
 from data.callbacks import (
     GAMES_PICKER_CALLBACK_DATA,
     TESTS_PICKER_CALLBACK_DATA,
-    CHANGE_ALERT_CALLBACK_DATA
+    CHANGE_USER_ALERT_CALLBACK_DATA
 )
 
 from data.messages import (
@@ -28,7 +28,7 @@ def main_menu_ikb(alert: bool) -> InlineKeyboardMarkup:
     ikb.row(InlineKeyboardButton(text=TESTS_PICKER_CALLBACK_DATA, callback_data=TESTS_PICKER_IKB_MESSAGE))
     ikb.row(InlineKeyboardButton(
         text=ALERT_OFF_IKB_MESSAGE if alert else ALERT_ON_IKB_MESSAGE,
-        callback_data=CHANGE_ALERT_CALLBACK_DATA)
+        callback_data=CHANGE_USER_ALERT_CALLBACK_DATA)
     )
 
     return ikb

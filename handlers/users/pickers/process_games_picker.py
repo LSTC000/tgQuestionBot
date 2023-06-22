@@ -1,5 +1,7 @@
 from loader import dp, bot
 
+from data.callbacks import CANCEL_TO_MAIN_MENU_CALLBACK_DATA
+
 from functions import last_ikb_clear, call_main_menu_ikb, check_user_alert_cache
 
 from pickers import GamesPicker
@@ -10,7 +12,7 @@ from aiogram import types
 from aiogram.dispatcher.storage import FSMContext
 
 
-@dp.callback_query_handler(state=PickersStatesGroup.games_picker)
+@dp.callback_query_handler(lambda c: c.data != CANCEL_TO_MAIN_MENU_CALLBACK_DATA, state=PickersStatesGroup.games_picker)
 async def process_games_picker(callback: types.CallbackQuery, state: FSMContext) -> None:
     # Call process selection.
     pick, game_name = await GamesPicker().process_selection(

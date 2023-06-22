@@ -2,6 +2,8 @@ from loader import dp, bot
 
 from data.callbacks import CANCEL_TO_MAIN_MENU_CALLBACK_DATA
 
+from database import update_test_attempts
+
 from functions import last_ikb_clear, call_main_menu_ikb, check_user_alert_cache
 
 from pickers import TestsPicker
@@ -24,6 +26,8 @@ async def process_tests_picker(callback: types.CallbackQuery, state: FSMContext)
     if pick:
         user_id = callback.from_user.id
         await bot.send_message(chat_id=user_id, text=f'Your choice: {game_name}')
+        # Add 1 value for the test attempts.
+        await update_test_attempts(game_name)
         # Clear last inline keyboard.
         await last_ikb_clear(user_id=user_id, state=state)
         # Call main inline menu.

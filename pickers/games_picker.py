@@ -14,7 +14,7 @@ from aiogram.types import InlineKeyboardMarkup, InlineKeyboardButton
 
 
 class GamesPicker:
-    async def game_picker(self, page: int) -> InlineKeyboardMarkup:
+    async def games_picker(self, page: int) -> InlineKeyboardMarkup:
         """
         :param page: Current picker page. Start value: 0.
         :return: Inline keyboard for pick a game.
@@ -78,11 +78,11 @@ class GamesPicker:
             elif callback_data == "PREV-BRANDS":
                 page -= 1
                 data[PICKER_PAGE_REDIS_KEY] = page
-                await callback.message.edit_reply_markup(reply_markup=await self.game_picker(page=page))
+                await callback.message.edit_reply_markup(reply_markup=await self.games_picker(page=page))
             elif callback_data == "NEXT-BRANDS":
                 page += 1
                 data[PICKER_PAGE_REDIS_KEY] = page
-                await callback.message.edit_reply_markup(reply_markup=await self.game_picker(page=page))
+                await callback.message.edit_reply_markup(reply_markup=await self.games_picker(page=page))
             elif callback_data != CANCEL_TO_MAIN_MENU_CALLBACK_DATA:
                 return_data = True, callback_data
 

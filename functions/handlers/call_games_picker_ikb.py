@@ -24,7 +24,7 @@ async def call_games_picker_ikb(user_id: int, state: FSMContext) -> None:
         msg = await bot.send_message(
             chat_id=user_id,
             text=GAMES_PICKER_MESSAGE,
-            reply_markup=await GamesPicker().game_picker(start_page)
+            reply_markup=await GamesPicker().games_picker(start_page)
         )
         # Remember id of the last inline keyboard.
         data[LAST_IKB_REDIS_KEY] = msg.message_id

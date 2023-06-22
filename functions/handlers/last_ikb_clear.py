@@ -8,7 +8,7 @@ from aiogram.utils.exceptions import MessageToDeleteNotFound, MessageCantBeDelet
 
 async def last_ikb_clear(user_id: int, state: FSMContext) -> None:
     '''
-    :param user_id: Телеграм user_id.
+    :param user_id: Telegram user id.
     :param state: FSMContext.
     :return: None.
     '''

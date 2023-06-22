@@ -1,3 +1,3 @@
-__all__ = ['GAMES_NAME']
+__all__ = ['GAMES_NAME', 'GAMES_COUNT']
 
-from .games_config import GAMES_NAME
+from .games_config import GAMES_NAME, GAMES_COUNT

@@ -21,3 +21,4 @@ GAMES_NAME = [
     'game_19',
     'game_20',
 ]
+GAMES_COUNT = len(GAMES_NAME)

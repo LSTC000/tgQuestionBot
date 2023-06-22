@@ -12,7 +12,7 @@ class GamesInfo(BaseModel):
     game_id = Column(BigInteger, primary_key=True, autoincrement=True,
                 server_default=sql.text('nextval(\'games_info_id_seq\')'))
     # Game name.
-    game_name = Column(VARCHAR(64), nullable=True)
+    game_name = Column(VARCHAR(64), nullable=False)
     # Number of attempts.
     attempts = Column(Integer, nullable=False)
     # Number of completed attempts.

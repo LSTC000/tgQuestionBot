@@ -1,0 +1,2 @@
+# GAMES PICKER.
+GAMES_PICKER_MESSAGE = 'Выберите игру'

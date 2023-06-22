@@ -1,6 +1,4 @@
-__all__ = [
-    'start_ikb'
-]
+__all__ = ['start_ikb']
 
 
 from .start_ikb import start_ikb

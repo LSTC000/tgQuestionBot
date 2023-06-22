@@ -6,7 +6,7 @@ from data.messages import START_MESSAGE
 
 from database import add_user_info
 
-from functions import ikb_clear, check_user_info_cache
+from functions import last_ikb_clear, check_user_info_cache
 
 from keyboards import start_ikb
 
@@ -18,8 +18,8 @@ from aiogram.dispatcher.storage import FSMContext
 async def start_msg(message: types.Message, state: FSMContext) -> None:
     user_id = message.from_user.id
 
-    # Clear previous inline keyboard.
-    await ikb_clear(user_id=user_id, state=state)
+    # Clear last inline keyboard.
+    await last_ikb_clear(user_id=user_id, state=state)
     # We check whether there is information about the user in the database, if not, then add it there.
     if not await check_user_info_cache(user_id):
         await add_user_info(user_id, message.from_user.first_name)

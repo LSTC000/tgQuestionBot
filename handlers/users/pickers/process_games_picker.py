@@ -4,7 +4,7 @@ from data.callbacks import CANCEL_TO_MAIN_MENU_CALLBACK_DATA
 
 from database import update_game_attempts
 
-from functions import clear_last_ikb, call_main_menu_ikb, check_user_alert_cache
+from functions import clear_last_ikb, clear_redis_data, call_main_menu_ikb, check_user_alert_cache
 
 from pickers import GamesPicker
 
@@ -30,6 +30,8 @@ async def process_games_picker(callback: types.CallbackQuery, state: FSMContext)
         await update_game_attempts(game_name)
         # Clear last inline keyboard.
         await clear_last_ikb(user_id=user_id, state=state)
+        # Clear redis data.
+        await clear_redis_data(state)
         # Call main inline menu.
         await call_main_menu_ikb(user_id=user_id, alert=await check_user_alert_cache(user_id), state=state)
         # Set main_menu_ikb state.

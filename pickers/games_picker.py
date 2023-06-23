@@ -1,6 +1,11 @@
 from math import ceil
 
-from data.callbacks import CANCEL_TO_MAIN_MENU_CALLBACK_DATA
+from data.callbacks import (
+    CANCEL_TO_MAIN_MENU_CALLBACK_DATA,
+    IGNORE_CALLBACK_DATA,
+    PREV_CALLBACK_DATA,
+    NEXT_CALLBACK_DATA
+)
 
 from data.config import GAMES_NAME, GAMES_COUNT, GAMES_PICKER_ROW_WIDTH, MAX_GAMES_ON_PAGE
 
@@ -21,7 +26,6 @@ class GamesPicker:
         """
 
         ikb = InlineKeyboardMarkup(row_width=GAMES_PICKER_ROW_WIDTH)
-        ignore_callback = "IGNORE"
 
         start = page * MAX_GAMES_ON_PAGE
         stop = start + MAX_GAMES_ON_PAGE
@@ -38,16 +42,19 @@ class GamesPicker:
         ikb.insert(
             InlineKeyboardButton(
                 text="<<" if page != 0 else " ",
-                callback_data="PREV-BRANDS" if page != 0 else ignore_callback
+                callback_data=PREV_CALLBACK_DATA if page != 0 else IGNORE_CALLBACK_DATA
             )
         )
         ikb.insert(
-            InlineKeyboardButton(f"{page+1}/{ceil(GAMES_COUNT / MAX_GAMES_ON_PAGE)}", callback_data=ignore_callback)
+            InlineKeyboardButton(
+                f"{page+1}/{ceil(GAMES_COUNT / MAX_GAMES_ON_PAGE)}",
+                callback_data=IGNORE_CALLBACK_DATA
+            )
         )
         ikb.insert(
             InlineKeyboardButton(
                 text=">>" if GAMES_COUNT > stop else " ",
-                callback_data="NEXT-BRANDS" if GAMES_COUNT > stop else ignore_callback)
+                callback_data=NEXT_CALLBACK_DATA if GAMES_COUNT > stop else IGNORE_CALLBACK_DATA)
         )
 
         ikb.row(InlineKeyboardButton(CANCEL_TO_MAIN_MENU_IKB_MESSAGE, callback_data=CANCEL_TO_MAIN_MENU_CALLBACK_DATA))
@@ -73,13 +80,13 @@ class GamesPicker:
 
             return_data = False, None
 
-            if callback_data == "IGNORE":
+            if callback_data == IGNORE_CALLBACK_DATA:
                 await callback.answer(cache_time=60)
-            elif callback_data == "PREV-BRANDS":
+            elif callback_data == PREV_CALLBACK_DATA:
                 page -= 1
                 data[PICKER_PAGE_REDIS_KEY] = page
                 await callback.message.edit_reply_markup(reply_markup=await self.games_picker(page=page))
-            elif callback_data == "NEXT-BRANDS":
+            elif callback_data == NEXT_CALLBACK_DATA:
                 page += 1
                 data[PICKER_PAGE_REDIS_KEY] = page
                 await callback.message.edit_reply_markup(reply_markup=await self.games_picker(page=page))

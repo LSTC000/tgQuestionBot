@@ -2,7 +2,7 @@ from loader import dp
 
 from database import add_user_info
 
-from functions import last_ikb_clear, check_user_info_cache, call_start_ikb
+from functions import clear_last_ikb, check_user_info_cache, call_start_ikb
 
 from states import StartCmdStatesGroup
 
@@ -15,7 +15,7 @@ async def start_msg(message: types.Message, state: FSMContext) -> None:
     user_id = message.from_user.id
 
     # Clear last inline keyboard.
-    await last_ikb_clear(user_id=user_id, state=state)
+    await clear_last_ikb(user_id=user_id, state=state)
     # We check whether there is information about the user in the database, if not, then add it there.
     if not await check_user_info_cache(user_id):
         await add_user_info(user_id, message.from_user.first_name)

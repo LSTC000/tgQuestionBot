@@ -1,5 +1,5 @@
 __all__ = [
-    'last_ikb_clear',
+    'clear_last_ikb',
     'call_start_ikb',
     'call_main_menu_ikb',
     'call_games_picker_ikb',
@@ -8,7 +8,7 @@ __all__ = [
 ]
 
 
-from .last_ikb_clear import last_ikb_clear
+from .clear_last_ikb import clear_last_ikb
 from .call_start_ikb import call_start_ikb
 from .call_main_menu_ikb import call_main_menu_ikb
 from .call_games_picker_ikb import call_games_picker_ikb

@@ -6,7 +6,7 @@ from aiogram.dispatcher.storage import FSMContext
 from aiogram.utils.exceptions import MessageToDeleteNotFound, MessageCantBeDeleted, MessageNotModified
 
 
-async def last_ikb_clear(user_id: int, state: FSMContext) -> None:
+async def clear_last_ikb(user_id: int, state: FSMContext) -> None:
     '''
     :param user_id: Telegram user id.
     :param state: FSMContext.

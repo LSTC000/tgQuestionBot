@@ -4,7 +4,7 @@ from data.callbacks import CANCEL_TO_MAIN_MENU_CALLBACK_DATA
 
 from database import update_test_attempts
 
-from functions import last_ikb_clear, call_main_menu_ikb, check_user_alert_cache
+from functions import clear_last_ikb, call_main_menu_ikb, check_user_alert_cache
 
 from pickers import TestsPicker
 
@@ -29,7 +29,7 @@ async def process_tests_picker(callback: types.CallbackQuery, state: FSMContext)
         # Add 1 value for the test attempts.
         await update_test_attempts(game_name)
         # Clear last inline keyboard.
-        await last_ikb_clear(user_id=user_id, state=state)
+        await clear_last_ikb(user_id=user_id, state=state)
         # Call main inline menu.
         await call_main_menu_ikb(user_id=user_id, alert=await check_user_alert_cache(user_id), state=state)
         # Set main_menu_ikb state.

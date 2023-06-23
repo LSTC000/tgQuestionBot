@@ -1,14 +1,18 @@
-from loader import dp, bot
+from loader import dp
 
 from data.callbacks import CANCEL_TO_MAIN_MENU_CALLBACK_DATA
 
+from data.redis import GAME_NAME_REDIS_KEY, GAME_QUESTION_REDIS_KEY
+
 from database import update_game_attempts
 
-from functions import clear_last_ikb, clear_redis_data, call_main_menu_ikb, check_user_alert_cache
+from functions import clear_last_ikb, clear_redis_data
 
 from pickers import GamesPicker
 
-from states import MainMenuStatesGroup, PickersStatesGroup
+from creators import GamesCreator
+
+from states import PickersStatesGroup, GamesStatesGroup
 
 from aiogram import types
 from aiogram.dispatcher.storage import FSMContext
@@ -25,14 +29,17 @@ async def process_games_picker(callback: types.CallbackQuery, state: FSMContext)
     # Check whether the user has made his choice.
     if pick:
         user_id = callback.from_user.id
-        await bot.send_message(chat_id=user_id, text=f'Your choice: {game_name}')
+        # Clear redis data.
+        await clear_redis_data(state)
+        # Add game name and point on first question in redis data.
+        async with state.proxy() as data:
+            data[GAME_NAME_REDIS_KEY] = game_name
+            data[GAME_QUESTION_REDIS_KEY] = 0
         # Add 1 value for the game attempts.
         await update_game_attempts(game_name)
         # Clear last inline keyboard.
         await clear_last_ikb(user_id=user_id, state=state)
-        # Clear redis data.
-        await clear_redis_data(state)
-        # Call main inline menu.
-        await call_main_menu_ikb(user_id=user_id, alert=await check_user_alert_cache(user_id), state=state)
-        # Set main_menu_ikb state.
-        await MainMenuStatesGroup.main_menu_ikb.set()
+        # Create a first game question.
+        await GamesCreator().questions_creator(user_id=user_id, state=state)
+        # Set game_question state.
+        await GamesStatesGroup.game_question.set()

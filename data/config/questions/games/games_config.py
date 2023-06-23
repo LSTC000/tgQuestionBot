@@ -1,5 +1,8 @@
+from .naruto_config import NARUTO_NAME, NARUTO_DATA
+
+
 GAMES_DATA = {
-    'Naruto': None,
+    NARUTO_NAME: NARUTO_DATA,
     'game_1': None,
     'game_2': None,
     'game_3': None,

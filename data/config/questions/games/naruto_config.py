@@ -1,11 +1,11 @@
-from data.paths import NARUTO_IMAGE_PATH_0
+from data.paths import NARUTO_QUESTION_IMAGE_PATH_0
 
 
 NARUTO_NAME = 'Naruto'
 NARUTO_DATA = {
     0: {
         'image': {
-            'path': NARUTO_IMAGE_PATH_0,
+            'path': NARUTO_QUESTION_IMAGE_PATH_0,
             'bytes': None,
             'url': None
         },

@@ -18,4 +18,3 @@ NARUTO_DATA = {
         'answers': ['A', 'B', 'C', 'D']
     }
 }
-NARUTO_QUESTIONS_COUNT = len(NARUTO_DATA)

@@ -11,7 +11,8 @@ from handlers import (
     register_users_commands,
     register_users_main_menu,
     register_users_pickers,
-    register_users_cancels
+    register_users_cancels,
+    register_users_games,
 )
 
 from database import startup_setup, shutdown_setup
@@ -23,6 +24,7 @@ from aiogram.utils import executor
 
 
 def register_all_handlers(dispatcher: Dispatcher):
+    register_users_games(dispatcher)
     register_users_pickers(dispatcher)
     register_users_cancels(dispatcher)
     register_users_main_menu(dispatcher)

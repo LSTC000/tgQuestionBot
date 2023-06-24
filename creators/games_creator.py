@@ -38,8 +38,7 @@ class GamesCreator:
             for key in image.keys():
                 if image[key] is not None:
                     if key == 'path' and os.path.exists(image[key]):
-                        with open(image[key], 'rb') as file:
-                            image = InputFile(file)
+                        image = InputFile(path_or_bytesio=image[key])
                     else:
                         image = image[key]
                     break

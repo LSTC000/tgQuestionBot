@@ -6,6 +6,8 @@ from data.redis import USER_ANSWERS_REDIS_KEY
 
 from creators import GamesCreator
 
+from functions import clear_last_ikb
+
 from states import GamesStatesGroup
 
 from aiogram import types
@@ -19,5 +21,7 @@ async def naruto_questions(callback: types.CallbackQuery, state: FSMContext) -> 
     # Add user answer un redis data.
     async with state.proxy() as data:
         data[USER_ANSWERS_REDIS_KEY].append(callback.data)
+    # Clear last inline keyboard.
+    await clear_last_ikb(user_id=user_id, state=state)
     # Call next question.
-    await GamesCreator.questions_creator(user_id=callback.from_user.id, state=state)
+    await GamesCreator().questions_creator(user_id=callback.from_user.id, state=state)

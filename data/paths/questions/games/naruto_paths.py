@@ -1,1 +1,1 @@
-NARUTO_QUESTION_IMAGE_PATH_0 = '/data/images/games/naruto/questions/0.jpg'
+NARUTO_QUESTION_IMAGE_PATH_0 = r'C:\Games\tgBots\tgQuestionBot\data\images\games\naruto\questions\0.jpg'

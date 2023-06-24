@@ -4,7 +4,7 @@ from data.callbacks import CANCEL_TO_MAIN_MENU_CALLBACK_DATA
 
 from functions import clear_last_ikb, call_main_menu_ikb, check_user_alert_cache
 
-from states import MainMenuStatesGroup, PickersStatesGroup
+from states import MainMenuStatesGroup, PickersStatesGroup, GamesStatesGroup
 
 from aiogram import types
 from aiogram.dispatcher.storage import FSMContext
@@ -12,7 +12,12 @@ from aiogram.dispatcher.storage import FSMContext
 
 @dp.callback_query_handler(
     lambda c: c.data == CANCEL_TO_MAIN_MENU_CALLBACK_DATA,
-    state=[PickersStatesGroup.games_picker, PickersStatesGroup.tests_picker]
+    state=[
+        PickersStatesGroup.games_picker,
+        PickersStatesGroup.tests_picker,
+        GamesStatesGroup.game_question,
+        GamesStatesGroup.finish_question,
+    ]
 )
 async def cancel_to_main_menu(callback: types.CallbackQuery, state: FSMContext) -> None:
     user_id = callback.from_user.id

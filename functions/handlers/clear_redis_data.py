@@ -3,7 +3,7 @@ from data.redis import (
     GAME_NAME_REDIS_KEY,
     GAME_QUESTION_NUMBER_REDIS_KEY,
     TEST_NAME_REDIS_KEY,
-    TEST_QUESTION_REDIS_KEY,
+    TEST_QUESTION_NUMBER_REDIS_KEY,
     USER_ANSWERS_REDIS_KEY
 )
 
@@ -29,8 +29,8 @@ async def clear_redis_data(state: FSMContext) -> None:
         if TEST_NAME_REDIS_KEY in data:
             data.pop(TEST_NAME_REDIS_KEY)
 
-        if TEST_QUESTION_REDIS_KEY in data:
-            data.pop(TEST_QUESTION_REDIS_KEY)
+        if TEST_QUESTION_NUMBER_REDIS_KEY in data:
+            data.pop(TEST_QUESTION_NUMBER_REDIS_KEY)
 
         if USER_ANSWERS_REDIS_KEY in data:
             data.pop(USER_ANSWERS_REDIS_KEY)

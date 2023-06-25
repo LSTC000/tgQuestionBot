@@ -20,7 +20,7 @@ async def call_questions_creator(user_id: int, state: FSMContext) -> None:
 
     async with state.proxy() as data:
         # Get image, question and questions inline keyboard.
-        image, question, ikb = GamesCreator().questions_creator(state)
+        image, question, ikb = await GamesCreator().questions_creator(state)
         # Call questions creator.
         if image is not None:
             msg = await bot.send_photo(chat_id=user_id, caption=question, photo=image, reply_markup=ikb)

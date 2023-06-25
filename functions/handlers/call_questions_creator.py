@@ -32,4 +32,3 @@ async def call_questions_creator(user_id: int, state: FSMContext) -> None:
         data[GAME_QUESTION_REDIS_KEY] = question
         # Remember id of the last inline keyboard.
         data[LAST_IKB_REDIS_KEY] = msg.message_id
-

@@ -2,7 +2,7 @@ from loader import dp
 
 from data.callbacks import TESTS_PICKER_CALLBACK_DATA
 
-from functions import clear_last_ikb, call_tests_picker_ikb
+from functions import clear_last_ikb, call_tests_picker
 
 from states import MainMenuStatesGroup, PickersStatesGroup
 
@@ -17,6 +17,6 @@ async def call_tests_picker(callback: types.CallbackQuery, state: FSMContext) ->
     # Clear last inline keyboard.
     await clear_last_ikb(user_id=user_id, state=state)
     # Call tests picker inline menu.
-    await call_tests_picker_ikb(user_id=user_id, state=state)
+    await call_tests_picker(user_id=user_id, state=state)
     # Set tests_picker state.
     await PickersStatesGroup.tests_picker.set()

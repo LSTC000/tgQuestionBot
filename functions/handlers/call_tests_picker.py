@@ -9,7 +9,7 @@ from loader import bot
 from aiogram.dispatcher.storage import FSMContext
 
 
-async def call_tests_picker_ikb(user_id: int, state: FSMContext) -> None:
+async def call_tests_picker(user_id: int, state: FSMContext) -> None:
     """
     :param user_id: Telegram user id.
     :param state: FSMContext.

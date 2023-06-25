@@ -6,11 +6,9 @@ from data.redis import GAME_NAME_REDIS_KEY, GAME_QUESTION_NUMBER_REDIS_KEY, USER
 
 from database import update_game_attempts
 
-from functions import clear_last_ikb, clear_redis_data
+from functions import clear_last_ikb, clear_redis_data, call_questions_creator
 
 from pickers import GamesPicker
-
-from creators import GamesCreator
 
 from states import PickersStatesGroup, GamesStatesGroup
 
@@ -40,7 +38,7 @@ async def process_games_picker(callback: types.CallbackQuery, state: FSMContext)
         await update_game_attempts(game_name)
         # Clear last inline keyboard.
         await clear_last_ikb(user_id=user_id, state=state)
-        # Create a first game question.
-        await GamesCreator().questions_creator(user_id=user_id, state=state)
+        # Call a first game question.
+        await call_questions_creator(user_id=user_id, state=state)
         # Set game_question state.
         await GamesStatesGroup.game_question.set()

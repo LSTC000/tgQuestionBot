@@ -2,7 +2,7 @@ from loader import dp
 
 from data.callbacks import CANCEL_TO_MAIN_MENU_CALLBACK_DATA
 
-from data.redis import GAME_NAME_REDIS_KEY, GAME_QUESTION_REDIS_KEY, USER_ANSWERS_REDIS_KEY
+from data.redis import GAME_NAME_REDIS_KEY, GAME_QUESTION_NUMBER_REDIS_KEY, USER_ANSWERS_REDIS_KEY
 
 from database import update_game_attempts
 
@@ -34,7 +34,7 @@ async def process_games_picker(callback: types.CallbackQuery, state: FSMContext)
         # Add game name, point on first question and user answers in redis data.
         async with state.proxy() as data:
             data[GAME_NAME_REDIS_KEY] = game_name
-            data[GAME_QUESTION_REDIS_KEY] = 0
+            data[GAME_QUESTION_NUMBER_REDIS_KEY] = 0
             data[USER_ANSWERS_REDIS_KEY] = []
         # Add 1 value for the game attempts.
         await update_game_attempts(game_name)

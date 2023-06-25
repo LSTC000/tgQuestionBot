@@ -8,7 +8,7 @@ from data.messages import CANCEL_TO_MAIN_MENU_IKB_MESSAGE
 
 from data.config import GAMES_DATA
 
-from data.redis import GAME_NAME_REDIS_KEY, GAME_QUESTION_REDIS_KEY, LAST_IKB_REDIS_KEY
+from data.redis import GAME_NAME_REDIS_KEY, GAME_QUESTION_NUMBER_REDIS_KEY, LAST_IKB_REDIS_KEY
 
 from aiogram.dispatcher.storage import FSMContext
 from aiogram.types import InlineKeyboardMarkup, InlineKeyboardButton, InputFile
@@ -24,8 +24,8 @@ class GamesCreator:
 
         async with state.proxy() as data:
             game_name = data[GAME_NAME_REDIS_KEY]
-            game_question = data[GAME_QUESTION_REDIS_KEY]
-            data[GAME_QUESTION_REDIS_KEY] += 1
+            game_question = data[GAME_QUESTION_NUMBER_REDIS_KEY]
+            data[GAME_QUESTION_NUMBER_REDIS_KEY] += 1
 
         ikb = InlineKeyboardMarkup()
 

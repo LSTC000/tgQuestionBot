@@ -15,7 +15,7 @@ from aiogram.dispatcher.storage import FSMContext
 
 
 @dp.callback_query_handler(lambda c: c.data != CANCEL_TO_MAIN_MENU_CALLBACK_DATA, state=GamesStatesGroup.game_question)
-async def naruto_questions(callback: types.CallbackQuery, state: FSMContext) -> None:
+async def questions_creator(callback: types.CallbackQuery, state: FSMContext) -> None:
     user_id = callback.from_user.id
 
     # Add user answer un redis data.

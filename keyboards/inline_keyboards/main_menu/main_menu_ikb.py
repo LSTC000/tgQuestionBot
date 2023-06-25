@@ -3,14 +3,16 @@ from data.config import ROW_WIDTH
 from data.callbacks import (
     GAMES_PICKER_CALLBACK_DATA,
     TESTS_PICKER_CALLBACK_DATA,
-    CHANGE_USER_ALERT_CALLBACK_DATA
+    CHANGE_USER_ALERT_CALLBACK_DATA,
+    PAYMENT_CALLBACK_DATA
 )
 
 from data.messages import (
     GAMES_PICKER_IKB_MESSAGE,
     TESTS_PICKER_IKB_MESSAGE,
     USER_ALERT_ON_IKB_MESSAGE,
-    USER_ALERT_OFF_IKB_MESSAGE
+    USER_ALERT_OFF_IKB_MESSAGE,
+    PAYMENT_IKB_MESSAGE
 )
 
 from aiogram.types import InlineKeyboardMarkup, InlineKeyboardButton
@@ -30,5 +32,6 @@ def main_menu_ikb(alert: bool) -> InlineKeyboardMarkup:
         text=USER_ALERT_OFF_IKB_MESSAGE if alert else USER_ALERT_ON_IKB_MESSAGE,
         callback_data=CHANGE_USER_ALERT_CALLBACK_DATA)
     )
+    ikb.row(InlineKeyboardButton(text=PAYMENT_IKB_MESSAGE, callback_data=PAYMENT_CALLBACK_DATA))
 
     return ikb

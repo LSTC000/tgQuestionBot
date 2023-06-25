@@ -11,7 +11,7 @@ from aiogram.dispatcher.storage import FSMContext
 
 
 @dp.callback_query_handler(lambda c: c.data == TESTS_PICKER_CALLBACK_DATA, state=MainMenuStatesGroup.main_menu_ikb)
-async def call_tests_picker(callback: types.CallbackQuery, state: FSMContext) -> None:
+async def tests_picker(callback: types.CallbackQuery, state: FSMContext) -> None:
     user_id = callback.from_user.id
 
     # Clear last inline keyboard.

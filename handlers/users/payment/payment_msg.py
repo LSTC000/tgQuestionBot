@@ -2,7 +2,7 @@ from loader import dp, bot
 
 from data.messages import ERROR_ENTER_PAYMENT_AMOUNT_MESSAGE
 
-from data.config import PAYMENT_TOKEN
+from data.config import PAYMENT_TOKEN, PAYMENT_TITLE, PAYMENT_DESCRIPTION
 
 from functions import call_main_menu_ikb, check_user_alert_cache
 
@@ -21,8 +21,8 @@ async def payment_msg(message: types.Message, state: FSMContext) -> None:
         # Call the payment menu.
         await bot.send_invoice(
             chat_id=user_id,
-            title='Я заголовок',
-            description='Я описание',
+            title=PAYMENT_TITLE,
+            description=PAYMENT_DESCRIPTION,
             provider_token=PAYMENT_TOKEN,
             currency='rub',
             is_flexible=False,

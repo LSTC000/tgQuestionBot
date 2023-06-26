@@ -1,4 +1,4 @@
-__all__ = ['PAYMENT_TOKEN']
+__all__ = ['PAYMENT_TOKEN', 'PAYMENT_TITLE', 'PAYMENT_DESCRIPTION']
 
 
-from .payment_config import PAYMENT_TOKEN
+from .payment_config import PAYMENT_TOKEN, PAYMENT_TITLE, PAYMENT_DESCRIPTION

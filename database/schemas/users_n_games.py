@@ -2,7 +2,7 @@ import datetime
 
 from database.database_setup import BaseModel
 
-from sqlalchemy import Column, BigInteger, SmallInteger, VARCHAR, Integer, DateTime, sql, func
+from sqlalchemy import Column, BigInteger, BOOLEAN, VARCHAR, Integer, DateTime, sql, func
 
 
 class UsersAndGames(BaseModel):
@@ -19,10 +19,10 @@ class UsersAndGames(BaseModel):
     opened = Column(Integer, nullable=False)
     # Number of games completed by the user.
     completed = Column(Integer, nullable=False)
-    # Like that the user gave to the game (1 or 0).
-    like = Column(SmallInteger, nullable=False)
-    # Dislike that the user gave to the game (1 or 0).
-    dislike = Column(SmallInteger, nullable=False)
+    # Like that the user gave to the game (True or False).
+    like = Column(BOOLEAN, nullable=False)
+    # Dislike that the user gave to the game (True or False).
+    dislike = Column(BOOLEAN, nullable=False)
     # Created users and games date.
     created_date = Column(DateTime(True), server_default=func.now())
     # Update users and games date.

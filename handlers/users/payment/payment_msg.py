@@ -11,6 +11,8 @@ from states import MainMenuStatesGroup, PaymentStatesGroup
 from aiogram import types
 from aiogram.dispatcher.storage import FSMContext
 
+from yoomoney import Quickpay, Client
+
 
 @dp.message_handler(state=PaymentStatesGroup.enter_amount)
 async def payment_msg(message: types.Message, state: FSMContext) -> None:
@@ -19,17 +21,14 @@ async def payment_msg(message: types.Message, state: FSMContext) -> None:
     try:
         amount = int(message.text)
         # Call the payment menu.
-        await bot.send_invoice(
-            chat_id=user_id,
-            title=PAYMENT_TITLE,
-            description=PAYMENT_DESCRIPTION,
-            provider_token=PAYMENT_TOKEN,
-            currency='rub',
-            is_flexible=False,
-            prices=[types.LabeledPrice(label='payment', amount=amount*100)],
-            start_parameter='time-machine-example',
-            payload='some-invoice-payload-for-our-internal-use'
+        quickpay = Quickpay(
+            receiver='4100117963448557',
+            quickpay_form='shop',
+            targets='Test',
+            paymentType='SB',
+            sum=amount
         )
+
     except ValueError:
         # Inform the user about an error when entering the amount.
         await bot.send_message(chat_id=user_id, text=ERROR_ENTER_PAYMENT_AMOUNT_MESSAGE)

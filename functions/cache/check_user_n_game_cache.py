@@ -11,7 +11,7 @@ async def check_user_n_game_cache(user_id: int, game_name: str) -> bool:
     '''
 
     if user_id in users_n_games_cache.keys():
-        if game_name in users_n_games_cache[user_id]:
+        if game_name in users_n_games_cache[user_id].keys():
             return True
         else:
             user_n_game = await check_user_n_game(user_id=user_id, game_name=game_name)

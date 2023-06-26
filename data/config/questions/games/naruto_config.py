@@ -1,5 +1,4 @@
 from data.paths import (
-    NARUTO_QUESTION_IMAGE_PATH_PREVIEW,
     NARUTO_QUESTION_IMAGE_PATH_0,
     NARUTO_QUESTION_IMAGE_PATH_1,
     NARUTO_QUESTION_IMAGE_PATH_2,
@@ -11,14 +10,15 @@ from data.paths import (
     NARUTO_QUESTION_IMAGE_PATH_8,
     NARUTO_QUESTION_IMAGE_PATH_9,
     NARUTO_QUESTION_IMAGE_PATH_10,
+    NARUTO_QUESTION_IMAGE_PATH_11,
 )
 
 
 NARUTO_NAME = 'Кто ты из Наруто?'
 NARUTO_DATA = {
-    -1: {
+    0: {
         'image': {
-            'path': NARUTO_QUESTION_IMAGE_PATH_PREVIEW,
+            'path': NARUTO_QUESTION_IMAGE_PATH_0,
             'bytes': None,
             'url': None
         },
@@ -27,9 +27,9 @@ NARUTO_DATA = {
             'Начнём',
         ]
     },
-    0: {
+    1: {
         'image': {
-            'path': NARUTO_QUESTION_IMAGE_PATH_0,
+            'path': NARUTO_QUESTION_IMAGE_PATH_1,
             'bytes': None,
             'url': None
         },
@@ -41,9 +41,9 @@ NARUTO_DATA = {
             'Пожилой (40-...)',
         ]
     },
-    1: {
+    2: {
         'image': {
-            'path': NARUTO_QUESTION_IMAGE_PATH_1,
+            'path': NARUTO_QUESTION_IMAGE_PATH_2,
             'bytes': None,
             'url': None
         },
@@ -55,9 +55,9 @@ NARUTO_DATA = {
             'Доверяю но проверяю',
         ]
     },
-    2: {
+    3: {
         'image': {
-            'path': NARUTO_QUESTION_IMAGE_PATH_2,
+            'path': NARUTO_QUESTION_IMAGE_PATH_3,
             'bytes': None,
             'url': None
         },
@@ -70,9 +70,9 @@ NARUTO_DATA = {
             'У меня нет свободного времени',
         ]
     },
-    3: {
+    4: {
         'image': {
-            'path': NARUTO_QUESTION_IMAGE_PATH_3,
+            'path': NARUTO_QUESTION_IMAGE_PATH_4,
             'bytes': None,
             'url': None
         },
@@ -85,9 +85,9 @@ NARUTO_DATA = {
             'Это просто слово',
         ]
     },
-    4: {
+    5: {
         'image': {
-            'path': NARUTO_QUESTION_IMAGE_PATH_4,
+            'path': NARUTO_QUESTION_IMAGE_PATH_5,
             'bytes': None,
             'url': None
         },
@@ -103,9 +103,9 @@ NARUTO_DATA = {
             'Клан Хьюга',
         ]
     },
-    5: {
+    6: {
         'image': {
-            'path': NARUTO_QUESTION_IMAGE_PATH_5,
+            'path': NARUTO_QUESTION_IMAGE_PATH_6,
             'bytes': None,
             'url': None
         },
@@ -116,9 +116,9 @@ NARUTO_DATA = {
             'Гендзюцу',
         ]
     },
-    6: {
+    7: {
         'image': {
-            'path': NARUTO_QUESTION_IMAGE_PATH_6,
+            'path': NARUTO_QUESTION_IMAGE_PATH_7,
             'bytes': None,
             'url': None
         },
@@ -128,9 +128,9 @@ NARUTO_DATA = {
             'Женщина',
         ]
     },
-    7: {
+    8: {
         'image': {
-            'path': NARUTO_QUESTION_IMAGE_PATH_7,
+            'path': NARUTO_QUESTION_IMAGE_PATH_8,
             'bytes': None,
             'url': None
         },
@@ -143,9 +143,9 @@ NARUTO_DATA = {
             'Быть забытым',
         ]
     },
-    8: {
+    9: {
         'image': {
-            'path': NARUTO_QUESTION_IMAGE_PATH_8,
+            'path': NARUTO_QUESTION_IMAGE_PATH_9,
             'bytes': None,
             'url': None
         },
@@ -159,9 +159,9 @@ NARUTO_DATA = {
             'Рассудительность',
         ]
     },
-    9: {
+    10: {
         'image': {
-            'path': NARUTO_QUESTION_IMAGE_PATH_9,
+            'path': NARUTO_QUESTION_IMAGE_PATH_10,
             'bytes': None,
             'url': None
         },
@@ -174,9 +174,9 @@ NARUTO_DATA = {
             'Буду трудится пока не выйдет',
         ]
     },
-    10: {
+    11: {
         'image': {
-            'path': NARUTO_QUESTION_IMAGE_PATH_10,
+            'path': NARUTO_QUESTION_IMAGE_PATH_11,
             'bytes': None,
             'url': None
         },

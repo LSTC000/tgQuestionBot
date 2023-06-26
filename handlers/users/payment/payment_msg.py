@@ -30,7 +30,7 @@ async def payment_msg(message: types.Message, state: FSMContext) -> None:
             start_parameter='time-machine-example',
             payload='some-invoice-payload-for-our-internal-use'
         )
-    except TypeError:
+    except ValueError:
         # Inform the user about an error when entering the amount.
         await bot.send_message(chat_id=user_id, text=ERROR_ENTER_PAYMENT_AMOUNT_MESSAGE)
         # Call main inline menu.

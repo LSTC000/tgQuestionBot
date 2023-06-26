@@ -2,7 +2,7 @@ from loader import dp, bot
 
 from data.messages import ERROR_ENTER_PAYMENT_AMOUNT_MESSAGE
 
-from data.config import PAYMENT_TOKEN, PAYMENT_TITLE, PAYMENT_DESCRIPTION
+from data.config import RECEIVER, QUICKPAY_FORM, TARGETS, PAYMENT_TYPE
 
 from functions import call_payment_ikb, call_main_menu_ikb, check_user_alert_cache
 
@@ -22,10 +22,10 @@ async def payment_msg(message: types.Message, state: FSMContext) -> None:
         amount = int(message.text)
         # Call the payment menu.
         quickpay = Quickpay(
-            receiver='4100117963448557',
-            quickpay_form='shop',
-            targets='Test',
-            paymentType='SB',
+            receiver=RECEIVER,
+            quickpay_form=QUICKPAY_FORM,
+            targets=TARGETS,
+            paymentType=PAYMENT_TYPE,
             sum=amount
         )
         # Call payment inline menu.

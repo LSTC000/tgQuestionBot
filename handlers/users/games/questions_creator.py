@@ -26,14 +26,15 @@ async def questions_creator(callback: types.CallbackQuery, state: FSMContext) ->
     async with state.proxy() as data:
         # Add user answer in redis data.
         data[USER_ANSWERS_REDIS_KEY].append((data[GAME_QUESTION_REDIS_KEY], callback.data))
-        # Clear last inline keyboard.
-        await clear_last_ikb(user_id=user_id, state=state)
-        # Check whether this question is the last one.
-        if data[GAME_QUESTION_NUMBER_REDIS_KEY] == len(GAMES_DATA[data[GAME_NAME_REDIS_KEY]]):
-            #Set finish_question state.
-            await GamesStatesGroup.finish_question.set()
-        else:
-            # Let's move on to the next question.
-            data[GAME_QUESTION_NUMBER_REDIS_KEY] += 1
-            # Call questions creator.
-            await call_questions_creator(user_id=user_id, state=state)
+        question_number = data[GAME_QUESTION_NUMBER_REDIS_KEY]
+        questions = len(GAMES_DATA[data[GAME_NAME_REDIS_KEY]])
+
+    # Clear last inline keyboard.
+    await clear_last_ikb(user_id=user_id, state=state)
+    # Check whether this question is the last one.
+    if question_number == questions:
+        #Set finish_question state.
+        await GamesStatesGroup.finish_question.set()
+    else:
+        # Call questions creator.
+        await call_questions_creator(user_id=user_id, state=state)

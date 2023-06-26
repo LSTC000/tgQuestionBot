@@ -10,3 +10,7 @@ USER_ALERT_OFF_IKB_MESSAGE = '🔕 Отключить уведомления'
 PAYMENT_IKB_MESSAGE = '💰 Поддержать проект'
 # PAYMENT.
 PAYMENT_URL_IKB_MESSAGE = 'Оплатить'
+# FINISH QUESTION.
+LIKE_IKB_MESSAGE = '👍 Понравилось'
+DISLIKE_IKB_MESSAGE = '👎 Не понравилось'
+REVIEW_IKB_MESSAGE = '💬 Оставить отзыв'

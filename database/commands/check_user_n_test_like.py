@@ -1,7 +1,7 @@
 from database import UsersAndTests
 
 
-async def check_users_n_tests_like(user_id: int, test_name: str) -> bool:
+async def check_user_n_test_like(user_id: int, test_name: str) -> bool:
     """
     :param user_id: Telegram user id.
     :param test_name: Test name.

@@ -5,7 +5,7 @@ from asyncpg import UniqueViolationError
 from database import UsersAndGames
 
 
-async def add_users_n_games(user_id: int, game_name: str) -> None:
+async def add_user_n_game(user_id: int, game_name: str) -> None:
     '''
     :param user_id: Telegram user id.
     :param game_name: Game name.

@@ -1,11 +1,11 @@
 from database import UsersAndTests
 
 
-async def update_user_n_test_dislike(user_id: int, game_name: str, value: int) -> None:
+async def update_user_n_test_dislike(user_id: int, game_name: str, value: bool) -> None:
     """
     :param user_id: Telegram user id.
     :param game_name: Game name.
-    :param value: 1 or 0.
+    :param value: True or False.
     :return: None.
     """
 

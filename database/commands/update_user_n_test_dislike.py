@@ -1,7 +1,7 @@
 from database import UsersAndTests
 
 
-async def update_users_n_tests_dislike(user_id: int, game_name: str, value: int) -> None:
+async def update_user_n_test_dislike(user_id: int, game_name: str, value: int) -> None:
     """
     :param user_id: Telegram user id.
     :param game_name: Game name.

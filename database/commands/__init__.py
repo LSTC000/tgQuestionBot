@@ -26,11 +26,12 @@ __all__ = [
     'update_users_n_games_completed',
     'update_users_n_games_like',
     'update_users_n_games_dislike',
+    'update_users_n_tests_like',
     'update_users_n_tests_dislike',
     'check_user_alert',
     'check_user_info',
     'check_game_info',
-    'check_test_info'
+    'check_test_info',
 ]
 
 
@@ -72,4 +73,5 @@ from .update_users_n_games_like import update_users_n_games_like
 from .update_users_n_games_dislike import update_users_n_games_dislike
 # UsersAndTests.
 from .add_users_n_tests import add_users_n_tests
+from .update_users_n_tests_like import update_users_n_tests_like
 from .update_users_n_tests_dislike import update_users_n_tests_dislike

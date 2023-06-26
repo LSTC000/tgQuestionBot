@@ -1,4 +1,4 @@
-__all__ = ['UsersInfo', 'Alerts', 'GamesInfo', 'TestsInfo', 'Reviews']
+__all__ = ['UsersInfo', 'Alerts', 'GamesInfo', 'TestsInfo', 'Reviews', 'UsersAndGames']
 
 
 from .alerts import Alerts
@@ -6,3 +6,4 @@ from .users_info import UsersInfo
 from .games_info import GamesInfo
 from .tests_info import TestsInfo
 from .reviews import Reviews
+from .users_n_games import UsersAndGames

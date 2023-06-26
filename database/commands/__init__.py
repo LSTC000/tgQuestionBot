@@ -25,7 +25,7 @@ __all__ = [
     'update_users_n_games_opened',
     'update_users_n_games_completed',
     'update_user_n_game_like',
-    'update_users_n_games_dislike',
+    'update_user_n_game_dislike',
     'update_users_n_tests_opened',
     'update_users_n_tests_completed',
     'update_user_n_test_like',
@@ -76,7 +76,7 @@ from .add_users_n_games import add_users_n_games
 from .update_users_n_games_opened import update_users_n_games_opened
 from .update_users_n_games_completed import update_users_n_games_completed
 from .update_user_n_game_like import update_user_n_game_like
-from .update_users_n_games_dislike import update_users_n_games_dislike
+from .update_user_n_game_dislike import update_user_n_game_dislike
 from .check_user_n_game import check_user_n_game
 from .check_user_n_game_like import check_user_n_game_like
 # UsersAndTests.

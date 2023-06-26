@@ -19,7 +19,7 @@ async def add_user_n_test(user_id: int, test_name: str) -> None:
             opened=0,
             completed=0,
             like=False,
-            dislikes=False
+            dislike=False
         )
         await user_n_test.create()
     except UniqueViolationError:

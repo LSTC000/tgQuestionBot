@@ -32,7 +32,7 @@ async def questions_creator(callback: types.CallbackQuery, state: FSMContext) ->
     # Clear last inline keyboard.
     await clear_last_ikb(user_id=user_id, state=state)
     # Check whether this question is the last one.
-    if question_number == questions:
+    if question_number == questions + 1:
         #Set finish_question state.
         await GamesStatesGroup.finish_question.set()
     else:

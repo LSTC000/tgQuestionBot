@@ -6,6 +6,7 @@ __all__ = [
     'check_user_n_game_like_cache',
     'check_user_n_test_like_cache',
     'update_user_n_game_like_cache',
+    'update_user_n_test_like_cache',
     'add_user_alert_cache',
     'delete_user_alert_cache',
 ]
@@ -24,3 +25,4 @@ from .update_user_n_game_like_cache import update_user_n_game_like_cache
 # UsersAndTests.
 from .check_user_n_test_cache import check_user_n_test_cache
 from .check_user_n_test_like_cache import check_user_n_test_like_cache
+from .update_user_n_test_like_cache import update_user_n_test_like_cache

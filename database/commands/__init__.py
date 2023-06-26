@@ -5,6 +5,7 @@ __all__ = [
     'add_game_info',
     'add_test_info',
     'add_user_review',
+    'add_users_n_games',
     'delete_user_alert',
     'update_user_opened_games',
     'update_user_completed_games',
@@ -57,3 +58,5 @@ from .update_test_dislikes import update_test_dislikes
 from .check_test_info import check_test_info
 # Reviews
 from .add_user_review import add_user_review
+# UsersAndGames.
+from .add_users_n_games import add_users_n_games

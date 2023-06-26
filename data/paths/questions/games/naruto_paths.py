@@ -1,4 +1,5 @@
 # QUESTIONS.
+NARUTO_QUESTION_IMAGE_PATH_PREVIEW = r'C:\Games\tgBots\tgQuestionBot\data\images\games\naruto\questions\preview.jpg'
 NARUTO_QUESTION_IMAGE_PATH_0 = r'C:\Games\tgBots\tgQuestionBot\data\images\games\naruto\questions\0.jpg'
 NARUTO_QUESTION_IMAGE_PATH_1 = r'C:\Games\tgBots\tgQuestionBot\data\images\games\naruto\questions\1.jpg'
 NARUTO_QUESTION_IMAGE_PATH_2 = r'C:\Games\tgBots\tgQuestionBot\data\images\games\naruto\questions\2.jpg'

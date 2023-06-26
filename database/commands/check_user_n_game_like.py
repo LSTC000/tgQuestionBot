@@ -5,11 +5,11 @@ async def check_user_n_game_like(user_id: int, game_name: str) -> bool:
     """
     :param user_id: Telegram user id.
     :param game_name: Game name.
-    :return: True if like is 1, else False.
+    :return: True if like is True, else False.
     """
 
     return True if await UsersAndGames.query.where(
         (UsersAndGames.user_id == user_id) &
         (UsersAndGames.game_name == game_name) &
-        (UsersAndGames.like == 1)
+        (UsersAndGames.like == True)
     ).gino.all() else False

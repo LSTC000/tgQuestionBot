@@ -22,7 +22,7 @@ class UsersAndGames(BaseModel):
     # Like that the user gave to the game (1 or 0).
     like = Column(SmallInteger, nullable=False)
     # Dislike that the user gave to the game (1 or 0).
-    dislikes = Column(SmallInteger, nullable=False)
+    dislike = Column(SmallInteger, nullable=False)
     # Created users and games date.
     created_date = Column(DateTime(True), server_default=func.now())
     # Update users and games date.

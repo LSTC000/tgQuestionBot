@@ -49,6 +49,6 @@ class GamesCreator:
         )
 
         if question_number:
-            question = f'Вопрос {question_number + 1}/{len(game_data)}\n\n{question}'
+            question = f'Вопрос {question_number}/{len(game_data) - 1}\n\n{question}'
 
         return image, question, ikb

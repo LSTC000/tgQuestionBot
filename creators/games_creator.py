@@ -48,6 +48,7 @@ class GamesCreator:
             InlineKeyboardButton(text=CANCEL_TO_MAIN_MENU_IKB_MESSAGE, callback_data=CANCEL_TO_MAIN_MENU_CALLBACK_DATA)
         )
 
-        question = f'Вопрос {question_number + 1}/{len(game_data)}\n\n{question}'
+        if question_number != -1:
+            question = f'Вопрос {question_number + 1}/{len(game_data)}\n\n{question}'
 
         return image, question, ikb

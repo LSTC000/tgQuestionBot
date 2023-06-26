@@ -33,7 +33,7 @@ async def payment_msg(message: types.Message, state: FSMContext) -> None:
     except ValueError:
         # Inform the user about an error when entering the amount.
         await bot.send_message(chat_id=user_id, text=ERROR_ENTER_PAYMENT_AMOUNT_MESSAGE)
-        # Call main inline menu.
-        await call_main_menu_ikb(user_id=user_id, alert=await check_user_alert_cache(user_id), state=state)
-        # Set main_menu_ikb state.
-        await MainMenuStatesGroup.main_menu_ikb.set()
+    # Call main inline menu.
+    await call_main_menu_ikb(user_id=user_id, alert=await check_user_alert_cache(user_id), state=state)
+    # Set main_menu_ikb state.
+    await MainMenuStatesGroup.main_menu_ikb.set()

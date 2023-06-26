@@ -10,7 +10,11 @@ from data.config import (
     USERS_INFO_MAXSIZE,
     USERS_INFO_TTL,
     USERS_ALERT_MAXSIZE,
-    USERS_ALERT_TTL
+    USERS_ALERT_TTL,
+    USERS_N_GAMES_MAXSIZE,
+    USERS_N_GAMES_TTL,
+    USERS_N_TESTS_MAXSIZE,
+    USERS_N_TESTS_TTL
 )
 
 from gino import Gino
@@ -27,7 +31,9 @@ __all__ = [
     'db',
     'users_info_cache',
     'users_alert_cache',
-    'logger'
+    'users_n_games_cache',
+    'users_n_test_cache',
+    'logger',
 ]
 
 storage = RedisStorage2(host=REDIS_HOST, port=REDIS_PORT, db=REDIS_DB)
@@ -39,5 +45,7 @@ db = Gino()
 
 users_info_cache = TTLCache(maxsize=USERS_INFO_MAXSIZE, ttl=USERS_INFO_TTL)
 users_alert_cache = TTLCache(maxsize=USERS_ALERT_MAXSIZE, ttl=USERS_ALERT_TTL)
+users_n_games_cache = TTLCache(maxsize=USERS_N_GAMES_MAXSIZE, ttl=USERS_N_GAMES_TTL)
+users_n_test_cache = TTLCache(maxsize=USERS_N_TESTS_MAXSIZE, ttl=USERS_N_TESTS_TTL)
 
 logger = logging.getLogger(__name__)

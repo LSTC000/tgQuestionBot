@@ -8,3 +8,5 @@ TESTS_PICKER_IKB_MESSAGE = '📕 Выберите тест'
 USER_ALERT_ON_IKB_MESSAGE = '🔔 Включить уведомления'
 USER_ALERT_OFF_IKB_MESSAGE = '🔕 Отключить уведомления'
 PAYMENT_IKB_MESSAGE = '💰 Поддержать проект'
+# PAYMENT.
+PAYMENT_URL_IKB_MESSAGE = 'Оплатить'

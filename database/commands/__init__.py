@@ -6,6 +6,7 @@ __all__ = [
     'add_test_info',
     'add_user_review',
     'add_users_n_games',
+    'add add_users_n_tests.py',
     'delete_user_alert',
     'update_user_opened_games',
     'update_user_completed_games',
@@ -60,3 +61,5 @@ from .check_test_info import check_test_info
 from .add_user_review import add_user_review
 # UsersAndGames.
 from .add_users_n_games import add_users_n_games
+# UsersAndTests.
+from .add_users_n_tests import add_users_n_tests

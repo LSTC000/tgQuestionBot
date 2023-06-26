@@ -1,7 +1,7 @@
 from database import UsersAndGames
 
 
-async def update_users_n_games_like(user_id: int, game_name: str, value: int) -> None:
+async def update_user_n_game_like(user_id: int, game_name: str, value: int) -> None:
     """
     :param user_id: Telegram user id.
     :param game_name: Game name.

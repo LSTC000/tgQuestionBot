@@ -1,6 +1,6 @@
 from loader import users_n_games_cache
 
-from database import update_users_n_games_like
+from database import update_user_n_game_like
 
 
 async def update_user_n_game_like_cache(user_id: int, game_name: str, value: bool) -> None:
@@ -15,4 +15,4 @@ async def update_user_n_game_like_cache(user_id: int, game_name: str, value: boo
         if game_name in users_n_games_cache[user_id].keys():
             users_n_games_cache[user_id][game_name] = value
 
-    await update_users_n_games_like(user_id=user_id, game_name=game_name, value=value)
+    await update_user_n_game_like(user_id=user_id, game_name=game_name, value=value)

@@ -37,6 +37,7 @@ __all__ = [
     'check_user_n_game_like',
     'check_user_n_game_dislike',
     'check_user_n_test_like',
+    'check_user_n_test_dislike',
     'check_user_n_game',
     'check_user_n_test',
 ]
@@ -89,3 +90,4 @@ from .update_user_n_test_like import update_user_n_test_like
 from .update_user_n_test_dislike import update_user_n_test_dislike
 from .check_user_n_test import check_user_n_test
 from .check_user_n_test_like import check_user_n_test_like
+from .check_user_n_test_dislike import check_user_n_test_dislike

@@ -20,7 +20,7 @@ from aiogram.dispatcher.storage import FSMContext
 
 
 @dp.callback_query_handler(lambda c: c.data != CANCEL_TO_MAIN_MENU_CALLBACK_DATA, state=GamesStatesGroup.game_question)
-async def questions_creator(callback: types.CallbackQuery, state: FSMContext) -> None:
+async def games_creator(callback: types.CallbackQuery, state: FSMContext) -> None:
     user_id = callback.from_user.id
 
     async with state.proxy() as data:

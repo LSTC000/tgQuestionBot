@@ -3,8 +3,6 @@ __all__ = [
     'MODEL',
     'CHAT_GPT_ROLE',
     'CHAT_GPT_ASSISTANT_SYSTEM_MESSAGE',
-    'MAX_TOKENS',
-    'MAX_CONTENT_TOKENS',
     'TEMPERATURE',
 ]
 
@@ -14,7 +12,5 @@ from .chat_gpt_config import (
     MODEL,
     CHAT_GPT_ROLE,
     CHAT_GPT_ASSISTANT_SYSTEM_MESSAGE,
-    MAX_TOKENS,
-    MAX_CONTENT_TOKENS,
     TEMPERATURE,
 )

@@ -44,6 +44,8 @@ async def games_creator(callback: types.CallbackQuery, state: FSMContext) -> Non
         await update_user_n_game_completed(user_id=user_id, game_name=game_name)
         # Call finish creator.
         await call_games_finish_creator(user_id=user_id, state=state)
+        # Set finish_question state.
+        await GamesStatesGroup.finish_question
     else:
         # Call questions creator.
         await call_games_questions_creator(user_id=user_id, state=state)

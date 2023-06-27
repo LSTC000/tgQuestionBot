@@ -1,0 +1,1 @@
+ENTER_GAME_REVIEW_MESSAGE = '✏ Введите ваш отзыв о пройденной игре'

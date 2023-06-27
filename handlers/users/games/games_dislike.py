@@ -36,7 +36,7 @@ async def games_dislike(callback: types.CallbackQuery, state: FSMContext) -> Non
         # Add 1 value to game dislikes.
         await update_game_dislikes(game_name)
         # Add 1 value to user dislikes.
-        await update_user_dislikes(game_name)
+        await update_user_dislikes(user_id)
         # Set True value to user and game dislike.
         await update_user_n_game_dislike_cache(user_id=user_id, game_name=game_name, value=True)
 

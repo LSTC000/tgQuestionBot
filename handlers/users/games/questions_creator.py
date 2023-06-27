@@ -11,7 +11,7 @@ from data.redis import (
     GAME_NAME_REDIS_KEY
 )
 
-from functions import clear_last_ikb, call_questions_creator
+from functions import clear_last_ikb, call_games_questions_creator
 
 from states import GamesStatesGroup
 
@@ -37,4 +37,4 @@ async def questions_creator(callback: types.CallbackQuery, state: FSMContext) ->
         await GamesStatesGroup.finish_question.set()
     else:
         # Call questions creator.
-        await call_questions_creator(user_id=user_id, state=state)
+        await call_games_questions_creator(user_id=user_id, state=state)

@@ -11,7 +11,7 @@ from loader import bot
 from aiogram.dispatcher.storage import FSMContext
 
 
-async def call_questions_creator(user_id: int, state: FSMContext) -> None:
+async def call_games_questions_creator(user_id: int, state: FSMContext) -> None:
     """
     :param user_id: Telegram user id.
     :param state: FSMContext.

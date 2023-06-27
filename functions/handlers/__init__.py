@@ -4,7 +4,6 @@ __all__ = [
     'call_payment_ikb',
     'call_games_picker',
     'call_tests_picker',
-    'call_questions_creator',
     'edit_main_menu_ikb',
     'clear_last_ikb',
     'clear_redis_data',
@@ -18,8 +17,6 @@ from .call_payment_ikb import call_payment_ikb
 # CALL INLINE PICKERS.
 from .call_games_picker import call_games_picker
 from .call_tests_picker import call_tests_picker
-# CALL CREATORS.
-from .call_questions_creator import call_questions_creator
 # CLEARS.
 from .clear_last_ikb import clear_last_ikb
 from .clear_redis_data import clear_redis_data

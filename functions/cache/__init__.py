@@ -10,6 +10,7 @@ __all__ = [
     'update_user_n_game_like_cache',
     'update_user_n_game_dislike_cache',
     'update_user_n_test_like_cache',
+    'update_user_n_test_dislike_cache',
     'add_user_alert_cache',
     'delete_user_alert_cache',
 ]
@@ -32,3 +33,4 @@ from .check_user_n_test_cache import check_user_n_test_cache
 from .check_user_n_test_like_cache import check_user_n_test_like_cache
 from .check_user_n_test_dislike_cache import check_user_n_test_dislike_cache
 from .update_user_n_test_like_cache import update_user_n_test_like_cache
+from .update_user_n_test_dislike_cache import update_user_n_test_dislike_cache

@@ -7,10 +7,11 @@ from data.messages import ENTER_GAME_REVIEW_MESSAGE
 from states import GamesStatesGroup
 
 from aiogram import types
+from aiogram.dispatcher.storage import FSMContext
 
 
 @dp.callback_query_handler(lambda c: c.data == REVIEW_CALLBACK_DATA, state=GamesStatesGroup.finish_question)
-async def games_review_clb(callback: types.CallbackQuery) -> None:
+async def games_review_clb(callback: types.CallbackQuery, state: FSMContext) -> None:
     user_id = callback.from_user.id
 
     # Please enter the user feedback.

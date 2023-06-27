@@ -13,6 +13,6 @@ async def update_user_n_test_like_cache(user_id: int, test_name: str, value: boo
 
     if user_id in users_n_test_cache.keys():
         if test_name in users_n_test_cache[user_id].keys():
-            users_n_test_cache[user_id][test_name] = value
+            users_n_test_cache[user_id][test_name][0] = value
 
     await update_user_n_test_like(user_id=user_id, test_name=test_name, value=value)

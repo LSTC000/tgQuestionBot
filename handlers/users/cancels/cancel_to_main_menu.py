@@ -18,6 +18,7 @@ from aiogram.dispatcher.storage import FSMContext
         GamesStatesGroup.game_question,
         GamesStatesGroup.finish_question,
         PaymentStatesGroup.enter_amount,
+        GamesStatesGroup.enter_review,
     ]
 )
 async def cancel_to_main_menu(callback: types.CallbackQuery, state: FSMContext) -> None:

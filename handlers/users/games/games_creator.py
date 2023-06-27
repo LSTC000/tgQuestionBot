@@ -11,7 +11,9 @@ from data.redis import (
     GAME_NAME_REDIS_KEY
 )
 
-from functions import clear_last_ikb, call_games_questions_creator
+from database import update_game_completed_attempts, update_user_completed_games, update_user_n_game_completed
+
+from functions import clear_last_ikb, call_games_questions_creator, call_games_finish_creator
 
 from states import GamesStatesGroup
 
@@ -27,14 +29,21 @@ async def games_creator(callback: types.CallbackQuery, state: FSMContext) -> Non
         # Add user answer in redis data.
         data[USER_ANSWERS_REDIS_KEY].append((data[GAME_QUESTION_REDIS_KEY], callback.data))
         question_number = data[GAME_QUESTION_NUMBER_REDIS_KEY]
-        questions = len(GAMES_DATA[data[GAME_NAME_REDIS_KEY]])
+        game_name = data[GAME_NAME_REDIS_KEY]
+        questions = len(GAMES_DATA[game_name])
 
     # Clear last inline keyboard.
     await clear_last_ikb(user_id=user_id, state=state)
     # Check whether this question is the last one.
-    if question_number == questions + 1:
-        #Set finish_question state.
-        await GamesStatesGroup.finish_question.set()
+    if question_number == questions:
+        # Add 1 value to game completed attempts.
+        await update_game_completed_attempts(game_name)
+        # Add 1 value to user completed games.
+        await update_user_completed_games(user_id)
+        # Add 1 value to user and game completed.
+        await update_user_n_game_completed(user_id=user_id, game_name=game_name)
+        # Call finish creator.
+        await call_games_finish_creator(user_id=user_id, state=state)
     else:
         # Call questions creator.
         await call_games_questions_creator(user_id=user_id, state=state)

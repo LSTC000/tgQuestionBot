@@ -25,21 +25,21 @@ async def games_like(callback: types.CallbackQuery, state: FSMContext) -> None:
     async with state.proxy() as data:
         game_name = data[GAME_NAME_REDIS_KEY]
 
-    # Change value to user and game like.
+    # Add 1 value to game likes.
+    await update_game_likes(game_name)
+    # Add 1 value to user likes.
+    await update_user_likes(game_name)
+    # Set False value to user and game dislike.
+    await update_user_n_game_dislike(
+        user_id=user_id,
+        game_name=game_name,
+        value=False
+    )
+
     if not await check_user_n_game_like_cache(user_id=user_id, game_name=game_name):
-        # Add 1 value to game likes.
-        await update_game_likes(game_name)
-        # Add 1 value to user likes.
-        await update_user_likes(game_name)
         # Set True value to user and game like.
         await update_user_n_game_like_cache(
             user_id=user_id,
             game_name=game_name,
             value=True
-        )
-        # Set False value to user and game dislike.
-        await update_user_n_game_dislike(
-            user_id=user_id,
-            game_name=game_name,
-            value=False
         )

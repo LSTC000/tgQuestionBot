@@ -1,12 +1,26 @@
 import os
 
-from data.callbacks import CANCEL_TO_MAIN_MENU_CALLBACK_DATA
+from data.callbacks import (
+    LIKE_CALLBACK_DATA,
+    DISLIKE_CALLBACK_DATA,
+    REVIEW_CALLBACK_DATA,
+    CANCEL_TO_MAIN_MENU_CALLBACK_DATA,
+)
 
-from data.messages import CANCEL_TO_MAIN_MENU_IKB_MESSAGE
+from data.messages import LIKE_IKB_MESSAGE, DISLIKE_IKB_MESSAGE, REVIEW_IKB_MESSAGE, CANCEL_TO_MAIN_MENU_IKB_MESSAGE
 
-from data.config import GAMES_DATA
+from data.config import (
+    GAMES_DATA,
+    ROW_WIDTH,
+    CHAT_GPT_TOKEN,
+    MODEL,
+    CHAT_GPT_ASSISTANT_SYSTEM_MESSAGE,
+    TEMPERATURE,
+)
 
-from data.redis import GAME_NAME_REDIS_KEY, GAME_QUESTION_NUMBER_REDIS_KEY
+from data.redis import GAME_NAME_REDIS_KEY, GAME_QUESTION_NUMBER_REDIS_KEY, USER_ANSWERS_REDIS_KEY
+
+import openai
 
 from aiogram.dispatcher.storage import FSMContext
 from aiogram.types import InlineKeyboardMarkup, InlineKeyboardButton, InputFile
@@ -23,7 +37,7 @@ class GamesCreator:
             game_name = data[GAME_NAME_REDIS_KEY]
             question_number = data[GAME_QUESTION_NUMBER_REDIS_KEY]
 
-        ikb = InlineKeyboardMarkup()
+        ikb = InlineKeyboardMarkup(row_width=ROW_WIDTH)
 
         game_data = GAMES_DATA[game_name]
         question_data = game_data[question_number]
@@ -52,3 +66,39 @@ class GamesCreator:
             question = f'Вопрос {question_number}/{len(game_data) - 1}\n\n{question}'
 
         return image, question, ikb
+
+    async def finish_creator(self, state: FSMContext) -> tuple:
+        """
+        :param state: FSMContext.
+        :return: Chat GPT answer and finish inline keyboard.
+        """
+
+        openai.api_key = CHAT_GPT_TOKEN
+
+        ikb = InlineKeyboardMarkup(row_width=ROW_WIDTH)
+
+        ikb.row(
+            InlineKeyboardButton(text=LIKE_IKB_MESSAGE, callback_data=LIKE_CALLBACK_DATA),
+            InlineKeyboardButton(text=DISLIKE_IKB_MESSAGE, callback_data=DISLIKE_CALLBACK_DATA)
+        )
+        ikb.row(InlineKeyboardButton(text=REVIEW_IKB_MESSAGE, callback_data=REVIEW_CALLBACK_DATA))
+        ikb.row(
+            InlineKeyboardButton(text=CANCEL_TO_MAIN_MENU_IKB_MESSAGE, callback_data=CANCEL_TO_MAIN_MENU_CALLBACK_DATA)
+        )
+
+        async with state.proxy() as data:
+            answers = data[USER_ANSWERS_REDIS_KEY]
+
+        messages = [
+            CHAT_GPT_ASSISTANT_SYSTEM_MESSAGE,
+            {'role': 'user', 'content': str(answers)}
+        ]
+
+        response = await openai.ChatCompletion.acreate(
+            model=MODEL,
+            messages=messages,
+            temperature=TEMPERATURE
+        )
+        model_content = response['choices'][0]['message']['content']
+
+        return model_content, ikb

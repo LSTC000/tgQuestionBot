@@ -1,6 +1,6 @@
 from loader import dp, bot
 
-from data.callbacks import CANCEL_TO_MAIN_MENU_CALLBACK_DATA
+from data.callbacks import LIKE_CALLBACK_DATA
 
 from data.messages import SUCCESSFUL_SAVE_GAME_LIKE_MESSAGE, ERROR_SAVE_GAME_LIKE_MESSAGE
 
@@ -22,7 +22,7 @@ from aiogram.dispatcher.storage import FSMContext
 
 
 @dp.callback_query_handler(
-    lambda c: c.data != CANCEL_TO_MAIN_MENU_CALLBACK_DATA,
+    lambda c: c.data == LIKE_CALLBACK_DATA,
     state=GamesStatesGroup.finish_question
 )
 async def games_like(callback: types.CallbackQuery, state: FSMContext) -> None:

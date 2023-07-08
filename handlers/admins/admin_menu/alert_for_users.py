@@ -6,33 +6,16 @@ from data.callbacks import (
     CANCEL_ALERT_FOR_USERS_CALLBACK_DATA
 )
 
-from data.messages import (
-    ADMIN_MENU_MESSAGE,
-    ALERT_FOR_USERS_MESSAGE,
-    CONFIRM_ALERT_FOR_USERS_MESSAGE,
-    ERROR_ALERT_FOR_USERS_MESSAGE,
-    SUCCESSFULLY_ALERT_FOR_USERS_MESSAGE
-)
+from data.messages import ALERT_FOR_USERS_MESSAGE, ERROR_ALERT_FOR_USERS_MESSAGE, SUCCESSFULLY_ALERT_FOR_USERS_MESSAGE
 
 from data.redis import ALERT_FOR_USERS_REDIS_KEY
 
-from keyboards import admin_menu_ikb, confirm_alert_for_users_menu_ikb
-
-from functions import clear_last_ikb, send_alerts
+from functions import clear_last_ikb, send_alerts, call_admin_menu_ikb, call_confirm_alert_for_users_menu_ikb
 
 from states import AdminMenuStatesGroup
 
 from aiogram import types
 from aiogram.dispatcher.storage import FSMContext
-from aiogram.utils.exceptions import (
-    BotBlocked,
-    ChatNotFound,
-    UserDeactivated,
-    MigrateToChat,
-    Unauthorized,
-    BadRequest,
-    RetryAfter
-)
 
 
 @dp.callback_query_handler(lambda c: c.data == ALERT_FOR_USERS_CALLBACK_DATA, state=AdminMenuStatesGroup.admin_menu)
@@ -55,24 +38,20 @@ async def alert_for_users(message: types.Message, state: FSMContext) -> None:
         async with state.proxy() as data:
             data[ALERT_FOR_USERS_REDIS_KEY] = text
         # Call confirm menu.
-        await bot.send_message(
-            chat_id=user_id,
-            text=CONFIRM_ALERT_FOR_USERS_MESSAGE.format(text),
-            reply_markup=confirm_alert_for_users_menu_ikb
-        )
-        # Set confirm_for_users state.
-        await AdminMenuStatesGroup.confirm_for_users.set()
+        await call_confirm_alert_for_users_menu_ikb(user_id=user_id, text=text, state=state)
+        # Set confirm_alert_for_users state.
+        await AdminMenuStatesGroup.confirm_alert_for_users.set()
     else:
         await bot.send_message(chat_id=user_id, text=ERROR_ALERT_FOR_USERS_MESSAGE)
         # Call admin menu.
-        await bot.send_message(chat_id=user_id, text=ADMIN_MENU_MESSAGE, new_ikb=admin_menu_ikb)
+        await call_admin_menu_ikb(user_id=user_id, state=state)
         # Set admin_menu state.
         await AdminMenuStatesGroup.admin_menu.set()
 
 
 @dp.callback_query_handler(
     lambda c: c.data in [CONFIRM_ALERT_FOR_USERS_CALLBACK_DATA, CANCEL_ALERT_FOR_USERS_CALLBACK_DATA],
-    state=AdminMenuStatesGroup.confirm_for_users
+    state=AdminMenuStatesGroup.confirm_alert_for_users
 )
 async def confirm_alert_for_users(callback: types.CallbackQuery, state: FSMContext) -> None:
     user_id = callback.from_user.id
@@ -89,6 +68,6 @@ async def confirm_alert_for_users(callback: types.CallbackQuery, state: FSMConte
     # Clear last inline keyboard.
     await clear_last_ikb(user_id=user_id, state=state)
     # Call admin menu.
-    await bot.send_message(chat_id=user_id, text=ADMIN_MENU_MESSAGE, new_ikb=admin_menu_ikb)
+    await call_admin_menu_ikb(user_id=user_id, state=state)
     # Set admin_menu state.
     await AdminMenuStatesGroup.admin_menu.set()

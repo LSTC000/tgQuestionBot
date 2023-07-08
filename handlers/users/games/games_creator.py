@@ -24,8 +24,8 @@ async def games_creator(callback: types.CallbackQuery, state: FSMContext) -> Non
         # Add user answer in redis data.
         game_name = data[GAME_NAME_REDIS_KEY]
         question_number = data[GAME_QUESTION_NUMBER_REDIS_KEY]
-        questions = len(GAMES_DATA[game_name])
-        answers_data = GAMES_DATA[game_name][question_number]['answers'][callback.data]
+        questions = len(GAMES_DATA[game_name][0])
+        answers_data = GAMES_DATA[game_name][0][question_number]['answers'][callback.data]
 
         for key in answers_data:
             if key not in data[USER_ANSWERS_REDIS_KEY]:

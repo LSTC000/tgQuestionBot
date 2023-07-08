@@ -68,7 +68,7 @@ class GamesCreator:
 
         async with state.proxy() as data:
             game_data = GAMES_DATA[data[GAME_NAME_REDIS_KEY]][1]
-            answer = AnswerFinder().best_weight(data[USER_ANSWERS_REDIS_KEY])
+            answer = game_data[AnswerFinder().best_weight(data[USER_ANSWERS_REDIS_KEY])]['description']
 
         image = game_data[answer]['image']
 

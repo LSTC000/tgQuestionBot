@@ -25,12 +25,12 @@ async def games_creator(callback: types.CallbackQuery, state: FSMContext) -> Non
         game_name = data[GAME_NAME_REDIS_KEY]
         question_number = data[GAME_QUESTION_NUMBER_REDIS_KEY]
         questions = len(GAMES_DATA[game_name][0])
-        answers_data = GAMES_DATA[game_name][0][question_number]['answers'][callback.data]
-
+        answers_data = GAMES_DATA[game_name][0][question_number-1]['answers'][callback.data]
+        print(data[USER_ANSWERS_REDIS_KEY])
         for key in answers_data:
-            if key not in data[USER_ANSWERS_REDIS_KEY]:
-                data[USER_ANSWERS_REDIS_KEY][key] = 0
-            data[USER_ANSWERS_REDIS_KEY][key] += answers_data[key]
+            if str(key) not in data[USER_ANSWERS_REDIS_KEY]:
+                data[USER_ANSWERS_REDIS_KEY][str(key)] = 0
+            data[USER_ANSWERS_REDIS_KEY][str(key)] += answers_data[key]
 
     # Clear last inline keyboard.
     await clear_last_ikb(user_id=user_id, state=state)

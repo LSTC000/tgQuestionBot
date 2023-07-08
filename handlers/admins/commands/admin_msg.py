@@ -22,6 +22,6 @@ async def admin_command(message: types.Message, state: FSMContext) -> None:
     await clear_last_ikb(user_id=user_id, state=state)
 
     if user_id in ADMINS:
-        await bot.send_message(user_id=user_id, text=ADMIN_MENU_MESSAGE, reply_markup=admin_menu_ikb)
+        await bot.send_message(chat_id=user_id, text=ADMIN_MENU_MESSAGE, reply_markup=admin_menu_ikb)
         # Set admin_menu state.
         await AdminMenuStatesGroup.admin_menu.set()

@@ -15,7 +15,30 @@ from data.paths import (
 
 
 NARUTO_NAME = 'Кто ты из Наруто?'
-NARUTO_DATA = {
+NARUTO_RESULTS_DATA = {
+    0: {
+        'image': {
+            'path': NARUTO_QUESTION_IMAGE_PATH_0,
+            'bytes': None,
+            'url': None
+        }
+    },
+    1: {
+        'image': {
+            'path': NARUTO_QUESTION_IMAGE_PATH_0,
+            'bytes': None,
+            'url': None
+        }
+    },
+    2: {
+        'image': {
+            'path': NARUTO_QUESTION_IMAGE_PATH_0,
+            'bytes': None,
+            'url': None
+        }
+    },
+}
+NARUTO_QUESTIONS_DATA = {
     0: {
         'image': {
             'path': NARUTO_QUESTION_IMAGE_PATH_0,

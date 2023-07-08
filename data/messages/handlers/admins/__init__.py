@@ -1,1 +1,1 @@
-from .admins_menu_messages import *
+from .admin_menu_messages import *

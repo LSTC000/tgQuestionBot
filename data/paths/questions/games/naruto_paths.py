@@ -12,6 +12,6 @@ NARUTO_QUESTION_IMAGE_PATH_9 = r'C:\Games\tgBots\tgQuestionBot\data\images\games
 NARUTO_QUESTION_IMAGE_PATH_10 = r'C:\Games\tgBots\tgQuestionBot\data\images\games\naruto\questions\10.jpg'
 NARUTO_QUESTION_IMAGE_PATH_11 = r'C:\Games\tgBots\tgQuestionBot\data\images\games\naruto\questions\11.jpg'
 # ANSWERS
-NARUTO_RESULT_IMAGE_PATH_0 = r'C:\Games\\tgBots\\tgQuestionBot\data\images\games\\naruto\questions\0.jpg'
-NARUTO_RESULT_IMAGE_PATH_1 = r'C:\Games\\tgBots\\tgQuestionBot\data\images\games\\naruto\questions\1.jpg'
-NARUTO_RESULT_IMAGE_PATH_2 = r'C:\Games\\tgBots\\tgQuestionBot\data\images\games\\naruto\questions\2.jpg'
+NARUTO_RESULT_IMAGE_PATH_0 = r'C:\Games\\tgBots\\tgQuestionBot\data\images\games\\naruto\results\0.jpg'
+NARUTO_RESULT_IMAGE_PATH_1 = r'C:\Games\\tgBots\\tgQuestionBot\data\images\games\\naruto\results\1.jpg'
+NARUTO_RESULT_IMAGE_PATH_2 = r'C:\Games\\tgBots\\tgQuestionBot\data\images\games\\naruto\results\2.jpg'

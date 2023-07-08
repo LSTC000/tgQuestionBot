@@ -1,7 +1,5 @@
 from data.redis import LAST_IKB_REDIS_KEY
 
-from data.messages import WAIT_CHAT_GPT_RESPONSE_MESSAGE
-
 from creators import GamesCreator
 
 from loader import bot

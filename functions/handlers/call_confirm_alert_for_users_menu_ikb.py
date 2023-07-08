@@ -22,7 +22,7 @@ async def call_confirm_alert_for_users_menu_ikb(user_id: int, text: str, state: 
         msg = await bot.send_message(
             chat_id=user_id,
             text=CONFIRM_ALERT_FOR_USERS_MESSAGE.format(text),
-            reply_markup=confirm_alert_for_users_menu_ikb
+            reply_markup=confirm_alert_for_users_menu_ikb()
         )
         # Remember id of the last inline keyboard.
         data[LAST_IKB_REDIS_KEY] = msg.message_id

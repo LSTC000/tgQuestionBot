@@ -1,12 +1,8 @@
-from loader import dp, bot
+from loader import dp
 
 from data.config import ADMINS
 
-from data.messages import ADMIN_MENU_MESSAGE
-
-from keyboards import admin_menu_ikb
-
-from functions import clear_last_ikb
+from functions import clear_last_ikb, call_admin_menu_ikb
 
 from states import AdminMenuStatesGroup
 
@@ -18,10 +14,10 @@ from aiogram.dispatcher.storage import FSMContext
 async def admin_command(message: types.Message, state: FSMContext) -> None:
     user_id = message.from_user.id
 
-    # Clear last inline keyboard.
-    await clear_last_ikb(user_id=user_id, state=state)
-
     if user_id in ADMINS:
-        await bot.send_message(chat_id=user_id, text=ADMIN_MENU_MESSAGE, reply_markup=admin_menu_ikb)
+        # Clear last inline keyboard.
+        await clear_last_ikb(user_id=user_id, state=state)
+        # Call admin menu.
+        await call_admin_menu_ikb(user_id=user_id, state=state)
         # Set admin_menu state.
         await AdminMenuStatesGroup.admin_menu.set()

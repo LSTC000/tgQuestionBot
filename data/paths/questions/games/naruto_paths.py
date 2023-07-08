@@ -11,3 +11,8 @@ NARUTO_QUESTION_IMAGE_PATH_8 = r'C:\Games\tgBots\tgQuestionBot\data\images\games
 NARUTO_QUESTION_IMAGE_PATH_9 = r'C:\Games\tgBots\tgQuestionBot\data\images\games\naruto\questions\9.jpg'
 NARUTO_QUESTION_IMAGE_PATH_10 = r'C:\Games\tgBots\tgQuestionBot\data\images\games\naruto\questions\10.jpg'
 NARUTO_QUESTION_IMAGE_PATH_11 = r'C:\Games\tgBots\tgQuestionBot\data\images\games\naruto\questions\11.jpg'
+# ANSWERS
+# 0 - Naruto
+# 1 - Sasuke
+# 2 - Sakura
+NARUTO_RESULT_IMAGE_PATH = 'C:\Games\\tgBots\\tgQuestionBot\data\images\games\\naruto\questions\{}.jpg'

@@ -15,6 +15,7 @@ from handlers import (
     register_users_games,
     register_users_payment,
     register_admins_commands,
+    register_admin_menu
 )
 
 from database import startup_setup, shutdown_setup
@@ -31,6 +32,7 @@ def register_all_handlers(dispatcher: Dispatcher):
     register_users_payment(dispatcher)
     register_users_cancels(dispatcher)
     register_users_main_menu(dispatcher)
+    register_admin_menu(dispatcher)
     register_users_commands(dispatcher)
     register_admins_commands(dispatcher)
 

@@ -27,7 +27,5 @@ async def call_games_questions_creator(user_id: int, state: FSMContext) -> None:
             msg = await bot.send_message(chat_id=user_id, text=question, reply_markup=ikb)
         # Move on to the next question.
         data[GAME_QUESTION_NUMBER_REDIS_KEY] += 1
-        # Remember question.
-        data[GAME_QUESTION_REDIS_KEY] = question
         # Remember id of the last inline keyboard.
         data[LAST_IKB_REDIS_KEY] = msg.message_id

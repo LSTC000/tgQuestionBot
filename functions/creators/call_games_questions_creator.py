@@ -1,5 +1,4 @@
 from data.redis import (
-    GAME_QUESTION_REDIS_KEY,
     GAME_QUESTION_NUMBER_REDIS_KEY,
     LAST_IKB_REDIS_KEY,
 )

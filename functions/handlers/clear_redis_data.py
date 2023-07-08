@@ -4,7 +4,8 @@ from data.redis import (
     GAME_QUESTION_NUMBER_REDIS_KEY,
     TEST_NAME_REDIS_KEY,
     TEST_QUESTION_NUMBER_REDIS_KEY,
-    USER_ANSWERS_REDIS_KEY
+    USER_ANSWERS_REDIS_KEY,
+    ALERT_FOR_USERS_REDIS_KEY
 )
 
 from aiogram.dispatcher.storage import FSMContext
@@ -34,3 +35,6 @@ async def clear_redis_data(state: FSMContext) -> None:
 
         if USER_ANSWERS_REDIS_KEY in data:
             data.pop(USER_ANSWERS_REDIS_KEY)
+
+        if ALERT_FOR_USERS_REDIS_KEY in data:
+            data.pop(ALERT_FOR_USERS_REDIS_KEY)

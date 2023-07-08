@@ -13,7 +13,7 @@ from data.config import GAMES_DATA, ROW_WIDTH
 
 from data.redis import GAME_NAME_REDIS_KEY, GAME_QUESTION_NUMBER_REDIS_KEY, USER_ANSWERS_REDIS_KEY
 
-import openai
+from utils import AnswerFinder
 
 from aiogram.dispatcher.storage import FSMContext
 from aiogram.types import InlineKeyboardMarkup, InlineKeyboardButton, InputFile
@@ -60,10 +60,10 @@ class GamesCreator:
 
         return image, question, ikb
 
-    async def finish_creator(self, state: FSMContext) -> str:
+    async def finish_creator(self, state: FSMContext) -> tuple:
         """
         :param state: FSMContext.
-        :return: Chat GPT answer and finish inline keyboard.
+        :return: Answer and finish inline keyboard.
         """
 
         ikb = InlineKeyboardMarkup(row_width=ROW_WIDTH)
@@ -78,6 +78,6 @@ class GamesCreator:
         )
 
         async with state.proxy() as data:
-            answers = data[USER_ANSWERS_REDIS_KEY]
+            answer = AnswerFinder().best_weight(data[USER_ANSWERS_REDIS_KEY])
 
-        return ''
+        return answer, ikb

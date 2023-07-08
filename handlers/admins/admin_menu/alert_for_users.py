@@ -6,8 +6,6 @@ from data.callbacks import (
     CANCEL_ALERT_FOR_USERS_CALLBACK_DATA
 )
 
-from data.redis import ALERT_FOR_USERS_REDIS_KEY
-
 from data.messages import (
     ADMIN_MENU_MESSAGE,
     ALERT_FOR_USERS_MESSAGE,
@@ -16,11 +14,13 @@ from data.messages import (
     SUCCESSFULLY_ALERT_FOR_USERS_MESSAGE
 )
 
-from database import get_alerts, delete_buyer_info
+from data.redis import ALERT_FOR_USERS_REDIS_KEY
+
+from database import get_users_alert
 
 from keyboards import admin_menu_ikb, confirm_alert_for_users_menu_ikb
 
-from functions import reload_ikb
+from functions import clear_last_ikb
 
 from states import AdminMenuStatesGroup
 
@@ -37,7 +37,7 @@ from aiogram.utils.exceptions import (
 )
 
 
-@dp.callback_query_handler(lambda c: c.data == ALERT_FOR_USERS_DATA, state=AdminMenuStatesGroup.admin_menu)
+@dp.callback_query_handler(lambda c: c.data == ALERT_FOR_USERS_CALLBACK_DATA, state=AdminMenuStatesGroup.admin_menu)
 async def enter_alert_for_users(callback: types.CallbackQuery) -> None:
     # Enter alert for users.
     await bot.send_message(chat_id=callback.from_user.id, text=ALERT_FOR_USERS_MESSAGE)

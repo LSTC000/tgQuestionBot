@@ -14,7 +14,7 @@ def admin_menu_ikb() -> InlineKeyboardMarkup:
 
     ikb = InlineKeyboardMarkup(row_width=ROW_WIDTH)
 
-    ikb.row(InlineKeyboardButton(text=ALERT_FOR_USERS_IKB_MESSAGE, callback_data=ALERT_FOR_USERS_DATA))
+    ikb.row(InlineKeyboardButton(text=ALERT_FOR_USERS_IKB_MESSAGE, callback_data=ALERT_FOR_USERS_CALLBACK_DATA))
     ikb.row(InlineKeyboardButton(text=CANCEL_TO_MAIN_MENU_IKB_MESSAGE, callback_data=CANCEL_TO_MAIN_MENU_CALLBACK_DATA))
 
     return ikb

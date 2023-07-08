@@ -67,10 +67,9 @@ class GamesCreator:
         """
 
         async with state.proxy() as data:
-            game_data = GAMES_DATA[data[GAME_NAME_REDIS_KEY]][1]
-            answer = game_data[AnswerFinder().best_weight(data[USER_ANSWERS_REDIS_KEY])]['description']
+            answer = GAMES_DATA[data[GAME_NAME_REDIS_KEY]][1][AnswerFinder().best_weight(data[USER_ANSWERS_REDIS_KEY])]
 
-        image = game_data[answer]['image']
+        image = answer['image']
 
         if image is not None:
             for key in image.keys():
@@ -92,4 +91,4 @@ class GamesCreator:
             InlineKeyboardButton(text=CANCEL_TO_MAIN_MENU_IKB_MESSAGE, callback_data=CANCEL_TO_MAIN_MENU_CALLBACK_DATA)
         )
 
-        return image, answer, ikb
+        return image, answer['description'], ikb

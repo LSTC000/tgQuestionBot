@@ -11,6 +11,9 @@ from data.paths import (
     NARUTO_QUESTION_IMAGE_PATH_9,
     NARUTO_QUESTION_IMAGE_PATH_10,
     NARUTO_QUESTION_IMAGE_PATH_11,
+    NARUTO_RESULT_IMAGE_PATH_0,
+    NARUTO_RESULT_IMAGE_PATH_1,
+    NARUTO_RESULT_IMAGE_PATH_2,
 )
 
 
@@ -18,24 +21,27 @@ NARUTO_NAME = 'Кто ты из Наруто?'
 NARUTO_RESULTS_DATA = {
     0: {
         'image': {
-            'path': NARUTO_QUESTION_IMAGE_PATH_0,
+            'path': NARUTO_RESULT_IMAGE_PATH_0,
             'bytes': None,
             'url': None
-        }
+        },
+        'description': 'Ты Наруто'
     },
     1: {
         'image': {
-            'path': NARUTO_QUESTION_IMAGE_PATH_0,
+            'path': NARUTO_RESULT_IMAGE_PATH_1,
             'bytes': None,
             'url': None
-        }
+        },
+        'description': 'Ты Саске'
     },
     2: {
         'image': {
-            'path': NARUTO_QUESTION_IMAGE_PATH_0,
+            'path': NARUTO_RESULT_IMAGE_PATH_2,
             'bytes': None,
             'url': None
-        }
+        },
+        'description': 'Ты Сакура'
     },
 }
 NARUTO_QUESTIONS_DATA = {

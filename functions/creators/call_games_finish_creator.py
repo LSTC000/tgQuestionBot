@@ -16,8 +16,11 @@ async def call_games_finish_creator(user_id: int, state: FSMContext) -> None:
 
     async with state.proxy() as data:
         # Get answer and finish inline keyboard.
-        answer, ikb = await GamesCreator().finish_creator(state)
+        image, answer, ikb = await GamesCreator().finish_creator(state)
         # Call finish creator.
-        msg = await bot.send_message(chat_id=user_id, text=answer, reply_markup=ikb)
+        if image is not None:
+            msg = await bot.send_photo(chat_id=user_id, caption=answer, photo=image, reply_markup=ikb)
+        else:
+            msg = await bot.send_message(chat_id=user_id, text=answer, reply_markup=ikb)
         # Remember id of the last inline keyboard.
         data[LAST_IKB_REDIS_KEY] = msg.message_id

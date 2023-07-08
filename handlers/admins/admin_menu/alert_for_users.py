@@ -16,11 +16,9 @@ from data.messages import (
 
 from data.redis import ALERT_FOR_USERS_REDIS_KEY
 
-from database import get_users_alert
-
 from keyboards import admin_menu_ikb, confirm_alert_for_users_menu_ikb
 
-from functions import clear_last_ikb
+from functions import clear_last_ikb, send_alerts
 
 from states import AdminMenuStatesGroup
 
@@ -50,31 +48,30 @@ async def alert_for_users(message: types.Message, state: FSMContext) -> None:
     user_id = message.from_user.id
     text = message.text
 
+    # Clear last inline keyboard.
+    await clear_last_ikb(user_id=user_id, state=state)
     # Check alert on empty.
     if text:
         async with state.proxy() as data:
             data[ALERT_FOR_USERS_REDIS_KEY] = text
-
-        # Вызываем меню подтверждения отправки уведомления.
-        await reload_ikb(
-            user_id=user_id,
+        # Call confirm menu.
+        await bot.send_message(
+            chat_id=user_id,
             text=CONFIRM_ALERT_FOR_USERS_MESSAGE.format(text),
-            new_ikb=confirm_alert_for_users_menu_ikb,
-            state=state
+            reply_markup=confirm_alert_for_users_menu_ikb
         )
-
+        # Set confirm_for_users state.
         await AdminMenuStatesGroup.confirm_for_users.set()
     else:
         await bot.send_message(chat_id=user_id, text=ERROR_ALERT_FOR_USERS_MESSAGE)
-
-        # Вызываем меню администратора.
-        await reload_ikb(user_id=user_id, text=ADMIN_MENU_MESSAGE, new_ikb=admin_menu_ikb, state=state)
-
+        # Call admin menu.
+        await bot.send_message(chat_id=user_id, text=ADMIN_MENU_MESSAGE, new_ikb=admin_menu_ikb)
+        # Set admin_menu state.
         await AdminMenuStatesGroup.admin_menu.set()
 
 
 @dp.callback_query_handler(
-    lambda c: c.data in [CONFIRM_ALERT_FOR_USERS_DATA, CANCEL_ALERT_FOR_USERS_DATA],
+    lambda c: c.data in [CONFIRM_ALERT_FOR_USERS_CALLBACK_DATA, CANCEL_ALERT_FOR_USERS_CALLBACK_DATA],
     state=AdminMenuStatesGroup.confirm_for_users
 )
 async def confirm_alert_for_users(callback: types.CallbackQuery, state: FSMContext) -> None:
@@ -84,19 +81,14 @@ async def confirm_alert_for_users(callback: types.CallbackQuery, state: FSMConte
         text = data[ALERT_FOR_USERS_REDIS_KEY]
         data.pop(ALERT_FOR_USERS_REDIS_KEY)
 
-    # Если админимстратор подтвердил отправку уведомления, то отправляем его.
-    if callback.data == CONFIRM_ALERT_FOR_USERS_DATA:
-        users = await get_alerts()
-        for user in users:
-            user = user[0]
-            try:
-                await bot.send_message(chat_id=user, text=text, disable_notification=True)
-            except (BotBlocked, ChatNotFound, UserDeactivated, MigrateToChat, Unauthorized, BadRequest, RetryAfter):
-                await delete_buyer_info(buyer_id=user)
-
+    if callback.data == CONFIRM_ALERT_FOR_USERS_CALLBACK_DATA:
+        # Sending users alert.
+        await send_alerts(text_alert=text)
         await bot.send_message(chat_id=user_id, text=SUCCESSFULLY_ALERT_FOR_USERS_MESSAGE)
 
-    # Вызываем меню администратора.
-    await reload_ikb(user_id=user_id, text=ADMIN_MENU_MESSAGE, new_ikb=admin_menu_ikb, state=state)
-
+    # Clear last inline keyboard.
+    await clear_last_ikb(user_id=user_id, state=state)
+    # Call admin menu.
+    await bot.send_message(chat_id=user_id, text=ADMIN_MENU_MESSAGE, new_ikb=admin_menu_ikb)
+    # Set admin_menu state.
     await AdminMenuStatesGroup.admin_menu.set()

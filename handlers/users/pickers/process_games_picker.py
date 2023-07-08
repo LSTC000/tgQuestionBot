@@ -38,7 +38,7 @@ async def process_games_picker(callback: types.CallbackQuery, state: FSMContext)
         async with state.proxy() as data:
             data[GAME_NAME_REDIS_KEY] = game_name
             data[GAME_QUESTION_NUMBER_REDIS_KEY] = 0
-            data[USER_ANSWERS_REDIS_KEY] = []
+            data[USER_ANSWERS_REDIS_KEY] = {}
         # Add 1 value for the game attempts.
         await update_game_attempts(game_name)
         # Add 1 value for the user opened games.

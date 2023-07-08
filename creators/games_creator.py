@@ -32,7 +32,7 @@ class GamesCreator:
 
         ikb = InlineKeyboardMarkup(row_width=ROW_WIDTH)
 
-        game_data = GAMES_DATA[game_name]
+        game_data = GAMES_DATA[game_name][0]
         question_data = game_data[question_number]
 
         image = question_data['image']

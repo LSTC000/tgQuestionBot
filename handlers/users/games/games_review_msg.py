@@ -29,7 +29,7 @@ async def games_review_msg(message: types.Message, state: FSMContext) -> None:
         await bot.send_message(chat_id=user_id, text=SUCCESSFUL_SAVE_GAME_REVIEW_MESSAGE)
     else:
         # Inform the user about error save review.
-        await bot.send_message(chat_id=user_id, text=ERROR_SAVE_GAME_REVIEW_MESSAGE)
+        await bot.send_message(chat_id=user_id, text=ERROR_SAVE_GAME_REVIEW_MESSAGE.format(MAX_REVIEW_LENGTH))
 
     # Set finish_question state.
     await GamesStatesGroup.finish_question.set()

@@ -1,4 +1,4 @@
-from data.config import TESTS_NAME
+from data.config import TESTS_NAMES
 
 from database import check_test_info, add_test_info
 
@@ -9,6 +9,6 @@ async def check_tests_info() -> None:
     :return: None.
     '''
 
-    for test_name in TESTS_NAME:
+    for test_name in TESTS_NAMES:
         if not await check_test_info(test_name):
             await add_test_info(test_name)

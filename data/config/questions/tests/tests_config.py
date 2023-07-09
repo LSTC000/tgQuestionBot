@@ -21,5 +21,5 @@ TESTS_DATA = {
     'test_19': None,
     'test_20': None,
 }
-TESTS_NAME = list(TESTS_DATA.keys())
-TESTS_COUNT = len(TESTS_NAME)
+TESTS_NAMES = list(TESTS_DATA.keys())
+TESTS_COUNT = len(TESTS_NAMES)

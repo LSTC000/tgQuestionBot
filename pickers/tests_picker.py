@@ -7,7 +7,7 @@ from data.callbacks import (
     NEXT_CALLBACK_DATA
 )
 
-from data.config import TESTS_NAME, TESTS_COUNT, TESTS_PICKER_ROW_WIDTH, MAX_TESTS_ON_PAGE
+from data.config import TESTS_NAMES, TESTS_COUNT, TESTS_PICKER_ROW_WIDTH, MAX_TESTS_ON_PAGE
 
 from data.messages import CANCEL_TO_MAIN_MENU_IKB_MESSAGE
 
@@ -33,8 +33,8 @@ class TestsPicker:
         for i in range(start, stop if stop <= TESTS_COUNT else TESTS_COUNT):
             ikb.row(
                 InlineKeyboardButton(
-                    text=TESTS_NAME[i],
-                    callback_data=TESTS_NAME[i]
+                    text=TESTS_NAMES[i],
+                    callback_data=TESTS_NAMES[i]
                 )
             )
 

@@ -7,3 +7,4 @@ from .questions import *
 from .pickers import *
 from .payment import *
 from .admins import *
+from .handlers import *

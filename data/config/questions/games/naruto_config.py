@@ -19,6 +19,7 @@ from data.paths import (
 
 NARUTO_NAME = 'Кто ты из Наруто?'
 NARUTO_RESULTS_DATA = {
+    'finder_method': 'best_weight',
     0: {
         'image': {
             'path': NARUTO_RESULT_IMAGE_PATH_0,

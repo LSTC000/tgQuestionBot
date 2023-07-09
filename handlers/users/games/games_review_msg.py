@@ -1,6 +1,6 @@
 from loader import dp, bot
 
-from data.config import MAX_REVIEW_CHARS
+from data.config import MAX_REVIEW_LENGTH
 
 from data.messages import SUCCESSFUL_SAVE_GAME_REVIEW_MESSAGE, ERROR_SAVE_GAME_REVIEW_MESSAGE
 
@@ -20,7 +20,7 @@ async def games_review_msg(message: types.Message, state: FSMContext) -> None:
     text = message.text
 
     # Check review length.
-    if len(text) <= MAX_REVIEW_CHARS:
+    if len(text) <= MAX_REVIEW_LENGTH:
         async with state.proxy() as data:
             game_name = data[GAME_NAME_REDIS_KEY]
         # Add review about the game in database.

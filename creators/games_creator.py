@@ -63,11 +63,16 @@ class GamesCreator:
     async def finish_creator(self, state: FSMContext) -> tuple:
         """
         :param state: FSMContext.
-        :return: Answer, image answer if it exists and finish inline keyboard.
+        :return: Answer description, image answer if it exists and finish inline keyboard.
         """
 
         async with state.proxy() as data:
-            answer = GAMES_DATA[data[GAME_NAME_REDIS_KEY]][1][AnswerFinder().best_weight(data[USER_ANSWERS_REDIS_KEY])]
+            game_data = GAMES_DATA[data[GAME_NAME_REDIS_KEY]][1]
+            finder_method = game_data['finder_method']
+
+            if finder_method == 'best_weight':
+                answer = game_data[AnswerFinder().best_weight(data[USER_ANSWERS_REDIS_KEY])]
+                description = answer['description']
 
         image = answer['image']
 
@@ -91,4 +96,4 @@ class GamesCreator:
             InlineKeyboardButton(text=CANCEL_TO_MAIN_MENU_IKB_MESSAGE, callback_data=CANCEL_TO_MAIN_MENU_CALLBACK_DATA)
         )
 
-        return image, answer['description'], ikb
+        return image, description, ikb

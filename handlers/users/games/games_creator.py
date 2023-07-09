@@ -24,13 +24,16 @@ async def games_creator(callback: types.CallbackQuery, state: FSMContext) -> Non
         # Add user answer in redis data.
         game_name = data[GAME_NAME_REDIS_KEY]
         question_number = data[GAME_QUESTION_NUMBER_REDIS_KEY]
-        questions = len(GAMES_DATA[game_name][0])
-        answers_data = GAMES_DATA[game_name][0][question_number-1]['answers'][callback.data]
-        print(data[USER_ANSWERS_REDIS_KEY])
-        for key in answers_data:
-            if str(key) not in data[USER_ANSWERS_REDIS_KEY]:
-                data[USER_ANSWERS_REDIS_KEY][str(key)] = 0
-            data[USER_ANSWERS_REDIS_KEY][str(key)] += answers_data[key]
+        game_data = GAMES_DATA[game_name][0]
+        questions = len(game_data)
+        answers_data = game_data[question_number-1]['answers'][callback.data]
+        finder_method = GAMES_DATA[game_name][1]['finder_method']
+
+        if finder_method == 'best_weight':
+            for key in answers_data:
+                if str(key) not in data[USER_ANSWERS_REDIS_KEY]:
+                    data[USER_ANSWERS_REDIS_KEY][str(key)] = 0
+                data[USER_ANSWERS_REDIS_KEY][str(key)] += answers_data[key]
 
     # Clear last inline keyboard.
     await clear_last_ikb(user_id=user_id, state=state)

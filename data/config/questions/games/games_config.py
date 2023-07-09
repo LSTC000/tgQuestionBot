@@ -24,5 +24,5 @@ GAMES_DATA = {
     'game_19': (None, None),
     'game_20': (None, None),
 }
-GAMES_NAME = list(GAMES_DATA.keys())
-GAMES_COUNT = len(GAMES_NAME)
+GAMES_NAMES = list(GAMES_DATA.keys())
+GAMES_COUNT = len(GAMES_NAMES)

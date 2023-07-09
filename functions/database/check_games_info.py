@@ -1,4 +1,4 @@
-from data.config import GAMES_NAME
+from data.config import GAMES_NAMES
 
 from database import check_game_info, add_game_info
 
@@ -9,6 +9,6 @@ async def check_games_info() -> None:
     :return: None.
     '''
 
-    for game_name in GAMES_NAME:
+    for game_name in GAMES_NAMES:
         if not await check_game_info(game_name):
             await add_game_info(game_name)

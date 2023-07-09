@@ -7,7 +7,7 @@ from data.callbacks import (
     NEXT_CALLBACK_DATA
 )
 
-from data.config import GAMES_NAME, GAMES_COUNT, GAMES_PICKER_ROW_WIDTH, MAX_GAMES_ON_PAGE
+from data.config import GAMES_NAMES, GAMES_COUNT, GAMES_PICKER_ROW_WIDTH, MAX_GAMES_ON_PAGE
 
 from data.messages import CANCEL_TO_MAIN_MENU_IKB_MESSAGE
 
@@ -33,8 +33,8 @@ class GamesPicker:
         for i in range(start, stop if stop <= GAMES_COUNT else GAMES_COUNT):
             ikb.row(
                 InlineKeyboardButton(
-                    text=GAMES_NAME[i],
-                    callback_data=GAMES_NAME[i]
+                    text=GAMES_NAMES[i],
+                    callback_data=GAMES_NAMES[i]
                 )
             )
 

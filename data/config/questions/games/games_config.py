@@ -1,9 +1,10 @@
 from .naruto_config import NARUTO_NAME, NARUTO_QUESTIONS_DATA, NARUTO_RESULTS_DATA
+from .avengers_config import AVENGERS_NAME, AVENGERS_QUESTIONS_DATA, AVENGERS_RESULTS_DATA
 
 
 GAMES_DATA = {
     NARUTO_NAME: (NARUTO_QUESTIONS_DATA, NARUTO_RESULTS_DATA),
-    'game_1': (None, None),
+    AVENGERS_NAME: (AVENGERS_QUESTIONS_DATA, AVENGERS_RESULTS_DATA),
     'game_2': (None, None),
     'game_3': (None, None),
     'game_4': (None, None),

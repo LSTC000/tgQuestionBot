@@ -13,6 +13,7 @@ from handlers import (
     register_users_pickers,
     register_users_cancels,
     register_users_games,
+    register_users_tests,
     register_users_payment,
     register_admins_commands,
     register_admin_menu
@@ -28,6 +29,7 @@ from aiogram.utils import executor
 
 def register_all_handlers(dispatcher: Dispatcher):
     register_users_games(dispatcher)
+    register_users_tests(dispatcher)
     register_users_pickers(dispatcher)
     register_users_payment(dispatcher)
     register_users_cancels(dispatcher)

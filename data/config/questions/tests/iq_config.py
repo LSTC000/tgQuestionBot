@@ -1,0 +1,3 @@
+IQ_NAME = 'IQ тест'
+IQ_RESULTS_DATA = {}
+IQ_QUESTIONS_DATA = {}

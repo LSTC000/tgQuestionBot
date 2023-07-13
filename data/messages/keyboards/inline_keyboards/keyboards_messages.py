@@ -4,7 +4,7 @@ CANCEL_TO_MAIN_MENU_IKB_MESSAGE = '⬅️ Вернуться в главное �
 START_IKB_MESSAGE = 'Давай начнём 🚀'
 # MAIN MENU.
 GAMES_PICKER_IKB_MESSAGE = '🎲 Выберите игровой тест'
-TESTS_PICKER_IKB_MESSAGE = '📕 Выберите обыяный тест'
+TESTS_PICKER_IKB_MESSAGE = '📕 Выберите обычный тест'
 USER_ALERT_ON_IKB_MESSAGE = '🔔 Включить уведомления'
 USER_ALERT_OFF_IKB_MESSAGE = '🔕 Отключить уведомления'
 PAYMENT_IKB_MESSAGE = '💰 Поддержать проект'
